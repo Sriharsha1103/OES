@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.ViewHolder> {
-    private List<StatisticsModel> listData;
+public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHolder> {
+    private List<SubjectsModel> listData;
     Context context;
 
-    public void setlist(List<StatisticsModel> listData) {
+    public void setlist(List<SubjectsModel> listData) {
         this.listData = listData;
     }
 
-    StatisticsAdapter(Context context) {
+    SubjectsAdapter(Context context) {
         this.context = context;
     }
 
@@ -33,15 +33,15 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final StatisticsModel ld=listData.get(position);
+        final SubjectsModel ld=listData.get(position);
                 holder.txtid.setText(ld.getKey());
 //        holder.txtname.setText(ld.getTest());
         holder.txtid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(context, Topics.class);
-                //intent.putExtra("subject_name" , ld.getKey());
-               // v.getContext().startActivity(intent);
+                Intent intent = new Intent(context, Topics.class);
+                intent.putExtra("subject_name" , ld.getKey());
+                v.getContext().startActivity(intent);
             }
         });
     }

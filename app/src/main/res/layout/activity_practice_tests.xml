@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:background="@color/grey_20"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="?attr/actionBarSize"
+        android:text="Total Questions:"
+        android:id="@+id/id_total_questions"
+        android:textSize="20sp"
+        android:textColor="@color/grey_60"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.Toolbar
 
@@ -25,19 +34,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="?attr/actionBarSize"
-                android:text="Marks:"
-                android:id="@+id/marks"
-                android:textSize="20sp"
-                android:textColor="@color/grey_60"
-                android:textStyle="bold" />
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingBottom="?attr/actionBarSize"-->
+<!--                android:text="Marks:"-->
+<!--                android:id="@+id/marks"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="@color/grey_60"-->
+<!--                android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/question"
@@ -220,83 +231,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@color/dark"-->
-<!--    tools:context=".Test">-->
-
-<!--    <com.alexfu.countdownview.CountDownView-->
-<!--        android:id="@+id/count_down"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="208dp"-->
-<!--        android:layout_marginTop="27dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="685dp"-->
-<!--        android:textAppearance="@style/TextAppearance.AppCompat.Display1"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:startDuration="60000" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="33dp"-->
-<!--        android:layout_marginTop="33dp"-->
-<!--        android:layout_marginEnd="89dp"-->
-<!--        android:layout_marginBottom="671dp"-->
-<!--        android:text="Question:"-->
-<!--        android:textColor="@color/colorAccent"-->
-<!--        android:textColorHint="@color/colorAccent"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/count_down"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="120dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:layout_marginBottom="481dp"-->
-<!--        android:textColorHint="@color/colorAccent"-->
-<!--        app:counterEnabled="true"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/question"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:scrollIndicators="right"-->
-<!--            android:scrollbars="vertical"-->
-<!--            android:textColor="@color/colorAccent"-->
-<!--            android:textColorHint="@color/colorAccent" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-
-
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

@@ -5,9 +5,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="subject_name"
+        android:text="Topic name"
         android:layout_marginTop="1dp"
-        android:id="@+id/id_subject_name"
+        android:id="@+id/id_topic_name"
         android:textSize="24sp"/>
 
 </LinearLayout>

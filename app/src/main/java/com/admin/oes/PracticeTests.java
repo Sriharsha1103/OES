@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Test extends AppCompatActivity {
-
+public class PracticeTests extends AppCompatActivity {
     private ProgressBar progressBar;
-    private TextView quest_tv,marks;
+    private TextView quest_tv;
     int MAX_STEP, selectedId, position = 0;
     int current_step = 1,corect = 0;
     ArrayList<String> que = new ArrayList<String>();
@@ -37,19 +37,15 @@ public class Test extends AppCompatActivity {
     ArrayList<String> D = new ArrayList<String>();
     ArrayList<String> ans = new ArrayList<String>();
     ArrayList<String> key = new ArrayList<String>();
-    ArrayList<String> marksa = new ArrayList<String>();
+   // ArrayList<String> marksa = new ArrayList<String>();
     private RadioGroup radioquestionGroup;
     private RadioButton radioans;
     RadioButton Ar,Br,Cr,Dr;
     String keyi;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbartest);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_practice_tests);
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -58,30 +54,30 @@ public class Test extends AppCompatActivity {
         getSupportActionBar().setSubtitle("");
 
         Intent intent = getIntent();
-        keyi = intent.getStringExtra("testid");
+        keyi = intent.getStringExtra("td");
 
         Ar = findViewById(R.id.a);
         Br = findViewById(R.id.b);
         Cr = findViewById(R.id.c);
         Dr = findViewById(R.id.d);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Tests").child(keyi).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Subjects").child("JAVA").child(keyi).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 // get total available quest
                 MAX_STEP = (int) dataSnapshot.getChildrenCount();
-                Toast.makeText(Test.this, MAX_STEP+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PracticeTests.this, MAX_STEP+"", Toast.LENGTH_SHORT).show();
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
 
-                    que.add(childDataSnapshot.child("q").getValue().toString());
-                    A.add(childDataSnapshot.child("a").getValue().toString());
-                    B.add(childDataSnapshot.child("b").getValue().toString());
-                    C.add(childDataSnapshot.child("c").getValue().toString());
-                    D.add(childDataSnapshot.child("d").getValue().toString());
-                    ans.add(childDataSnapshot.child("ans").getValue().toString());
-                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
+                    que.add(childDataSnapshot.child("QUESTION").getValue().toString());
+                    A.add(childDataSnapshot.child("OPT A").getValue().toString());
+                    B.add(childDataSnapshot.child("OPT B").getValue().toString());
+                    C.add(childDataSnapshot.child("OPT C").getValue().toString());
+                    D.add(childDataSnapshot.child("OPT D").getValue().toString());
+                    ans.add(childDataSnapshot.child("CORRECT ANS").getValue().toString());
+                    //marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
                 }
                 steppedprogress();
@@ -99,7 +95,7 @@ public class Test extends AppCompatActivity {
 
         if (pos <= MAX_STEP-1) {
             quest_tv.setText(que.get(pos));
-            marks.setText("Marks: " + marksa.get(pos));
+            //marks.setText("Marks: " + marksa.get(pos));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
             Cr.setText(C.get(pos));
@@ -125,7 +121,7 @@ public class Test extends AppCompatActivity {
 
     private void steppedprogress() {
         quest_tv = (TextView) findViewById(R.id.question);
-        marks = findViewById(R.id.marks);
+       // marks = findViewById(R.id.marks);
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setMax(MAX_STEP);
         progressBar.setProgress(current_step);
@@ -135,7 +131,7 @@ public class Test extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (current_step != 1){backStep(current_step);} else {
-                    Toast.makeText(Test.this, "First question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PracticeTests.this, "First question", Toast.LENGTH_SHORT).show();
                 }
             }
         });

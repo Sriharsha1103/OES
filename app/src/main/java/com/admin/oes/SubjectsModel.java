@@ -1,9 +1,9 @@
 package com.admin.oes;
 
-public class StatisticsModel {
+public class SubjectsModel {
     String key;
 
-    public StatisticsModel(String key) {
+    public SubjectsModel(String key) {
         this.key = key;
     }
 

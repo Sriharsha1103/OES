@@ -13,14 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Statistics"></activity>
+        <activity android:name=".PracticeTests"></activity>
+        <activity android:name=".Topics" />
+        <activity android:name=".Subjects" />
         <activity
             android:name=".Teacher"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Home">
+        <activity android:name=".Auth.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Profile" />
-        <activity android:name=".Auth.Login"></activity>
+        <activity android:name=".Home" />
         <activity
             android:name=".Event.Events"
             android:label="@string/title_activity_home"

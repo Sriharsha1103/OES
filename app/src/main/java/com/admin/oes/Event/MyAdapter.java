@@ -47,6 +47,7 @@ public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             public void onClick(View v) {
                 Intent intent = new Intent(context, Test.class);
                 intent.putExtra("testid" , ld.getKey());
+               // intent.putExtra("test_type","TESTS");
                 v.getContext().startActivity(intent);
             }
         });

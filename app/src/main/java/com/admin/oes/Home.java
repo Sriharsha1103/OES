@@ -231,9 +231,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_events){
             startActivity(new Intent(Home.this , Events.class));
         } else if (id == R.id.nav_Statistics){
-            Toast.makeText(instance, "Stats", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_notification){
-            Toast.makeText(instance, "Notifications", Toast.LENGTH_SHORT).show();
+           // startActivity(new Intent(Home.this , Subjects.class));
+        } else if (id == R.id.nav_practice_tests){
+            startActivity(new Intent(Home.this , Subjects.class));
         } else if (id == R.id.nav_signout){
             showsignoutDialog();
         }  else if (id == R.id.nav_teacher){
