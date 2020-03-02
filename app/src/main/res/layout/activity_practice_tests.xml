@@ -5,15 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/grey_20"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="?attr/actionBarSize"
-        android:text="Total Questions:"
-        android:id="@+id/id_total_questions"
-        android:textSize="20sp"
-        android:textColor="@color/grey_60"
-        android:textStyle="bold" />
 
     <androidx.appcompat.widget.Toolbar
 
@@ -35,15 +26,15 @@
         android:orientation="vertical">
 
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent" >
 
 <!--            <TextView-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:paddingBottom="?attr/actionBarSize"-->
 <!--                android:text="Marks:"-->
 <!--                android:id="@+id/marks"-->
 <!--                android:textSize="20sp"-->
@@ -52,28 +43,22 @@
 
             <TextView
                 android:id="@+id/question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
                 android:layout_marginTop="40dp"
-                android:hint="Question Name"
                 android:padding="20dp"
-                android:textSize="20sp"
+                android:scrollbars="vertical"
+                android:text="Loading.."
                 android:textColor="@color/grey_60"
+                android:textSize="40sp"
                 android:textStyle="bold" />
-
-
 
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView"
-                android:layout_marginTop="190dp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
                 android:id="@+id/radioGroup">
-
-
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -86,8 +71,6 @@
 
                     />
 
-
-
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,34 +80,32 @@
                     android:checked="false"
                     android:textSize="15sp"
 
-                     />
+                    />
 
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C."
+                    android:padding="20dp"
+                    android:id="@+id/c"
+                    android:checked="false"
+                    android:textSize="15sp"
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="C."
-                        android:padding="20dp"
-                        android:id="@+id/c"
-                        android:checked="false"
-                        android:textSize="15sp"
+                    />
 
-                        />
-
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="D."
-                        android:id="@+id/d"
-                        android:padding="20dp"
-                        android:checked="false"
-                        android:textSize="15sp"
-                        />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D."
+                    android:id="@+id/d"
+                    android:padding="20dp"
+                    android:checked="false"
+                    android:textSize="15sp"
+                    />
 
             </RadioGroup>
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -192,6 +173,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/next_test"
                     android:text="NEXT"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/grey_60"
@@ -210,24 +192,3 @@
     </RelativeLayout>
 
 </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

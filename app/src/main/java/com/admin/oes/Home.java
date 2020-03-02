@@ -231,7 +231,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_events){
             startActivity(new Intent(Home.this , Events.class));
         } else if (id == R.id.nav_Statistics){
-           // startActivity(new Intent(Home.this , Subjects.class));
+            startActivity(new Intent(Home.this , Statistics.class));
         } else if (id == R.id.nav_practice_tests){
             startActivity(new Intent(Home.this , Subjects.class));
         } else if (id == R.id.nav_signout){
