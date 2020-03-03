@@ -20,6 +20,7 @@ import java.util.List;
 
 public class Topics extends AppCompatActivity {
     DatabaseReference databaseReference;
+    TextView abc;
     private List<TopicModel> listData;
     private RecyclerView rv;
     private TopicAdapter adapter;
@@ -31,7 +32,7 @@ public class Topics extends AppCompatActivity {
         setTitle("Topics");
         databaseReference = FirebaseDatabase.getInstance().getReference();
         adapter = new TopicAdapter(Topics.this);
-
+        abc=findViewById(R.id.id_topic_name);
         rv=(RecyclerView)findViewById(R.id.id_topic_recycler_view);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(Topics.this));
@@ -45,7 +46,7 @@ public class Topics extends AppCompatActivity {
         //x.setText(topic_name);
         databaseReference.child("Subjects").child(sub_name).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(final DataSnapshot dataSnapshot) {
 
                 listData.clear();
 
@@ -55,11 +56,18 @@ public class Topics extends AppCompatActivity {
                 }
                 adapter.setlist(listData);
                 rv.setAdapter(adapter);
-
-                // get total available quest
-                int size = (int) dataSnapshot.getChildrenCount();
-              TextView usercount = findViewById(R.id.id_topic_name);
-                usercount.setText(size+"");
+                TextView usercount = findViewById(R.id.id_topic_name);
+                usercount.setText(String.valueOf(dataSnapshot.getChildrenCount()));
+                sub_name=dataSnapshot.getKey();
+//               abc.setOnClickListener(new View.OnClickListener() {
+//                   @Override
+//                   public void onClick(View v) {
+//                       Intent intent = new Intent(getApplicationContext(), PracticeTests.class);
+//                       intent.putExtra("td" , databaseReference.getKey());
+//                       intent.putExtra("subj_name",dataSnapshot.getKey());
+//                       startActivity(intent);
+//                   }
+//               });
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -67,6 +75,8 @@ public class Topics extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void Topic_name(View view) {
         Intent intent = new Intent(getApplicationContext(), PracticeTests.class);

@@ -46,7 +46,7 @@ public class PracticeTests extends AppCompatActivity {
     private RadioGroup radioquestionGroup;
     private RadioButton radioans;
     RadioButton Ar,Br,Cr,Dr;
-    String keyi;
+    String keyi,sub;
     FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,9 @@ public class PracticeTests extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         Intent intent = getIntent();
         keyi = intent.getStringExtra("td");
+        sub=intent.getStringExtra("subj_name");
+        //String parent = dataSnapshot.getKey();
+
 
         Ar = findViewById(R.id.a);
         Br = findViewById(R.id.b);
@@ -72,6 +75,7 @@ public class PracticeTests extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 // get total available quest
+                String parent = dataSnapshot.getKey();
                 MAX_STEP = (int) dataSnapshot.getChildrenCount();
                 Toast.makeText(PracticeTests.this, MAX_STEP+"", Toast.LENGTH_SHORT).show();
                 for (int i = 1; i <= MAX_STEP; i++) {
