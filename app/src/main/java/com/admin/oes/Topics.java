@@ -54,6 +54,7 @@ public class Topics extends AppCompatActivity {
                     String key = childDataSnapshot.getKey();
                     listData.add(new TopicModel(key));
                 }
+
                 adapter.setlist(listData);
                 rv.setAdapter(adapter);
                 TextView usercount = findViewById(R.id.id_topic_name);
