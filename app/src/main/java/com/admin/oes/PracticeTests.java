@@ -61,7 +61,7 @@ public class PracticeTests extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         Intent intent = getIntent();
         keyi = intent.getStringExtra("td");
-        sub=intent.getStringExtra("subj_name");
+        sub=intent.getStringExtra("sub_name");
         //String parent = dataSnapshot.getKey();
 
 
@@ -70,7 +70,7 @@ public class PracticeTests extends AppCompatActivity {
         Cr = findViewById(R.id.c);
         Dr = findViewById(R.id.d);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Subjects").child("JAVA").child(keyi).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Subjects").child(sub).child(keyi).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -232,7 +232,7 @@ public class PracticeTests extends AppCompatActivity {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi);
                 databaseReference.child("Name").setValue(sharedPreferences.getString("name","0"));
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
-                databaseReference.child("Correctans").setValue(corect);
+                databaseReference.child("Correctans").setValue(radioans.getText());
                 databaseReference.child("wrongans").setValue(Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");

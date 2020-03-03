@@ -1,10 +1,19 @@
 package com.admin.oes;
 
 public class TopicModel {
-    String key;
+    String key,sub;
 
-    public TopicModel(String key) {
+    public TopicModel(String key,String sub) {
         this.key = key;
+        this.sub=sub;
+    }
+
+    public String getSub() {
+        return sub;
+    }
+
+    public void setSub(String sub) {
+        this.sub = sub;
     }
 
     public String getKey() {

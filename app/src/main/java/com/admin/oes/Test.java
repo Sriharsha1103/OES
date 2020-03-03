@@ -241,7 +241,7 @@ public class Test extends AppCompatActivity {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi);
                 databaseReference.child("Name").setValue(sharedPreferences.getString("name","0"));
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
-                databaseReference.child("Correctans").setValue(corect);
+                databaseReference.child("Correctans").setValue(radioans.getText());
                 databaseReference.child("wrongans").setValue(Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");

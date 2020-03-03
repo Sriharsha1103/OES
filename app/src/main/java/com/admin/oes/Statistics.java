@@ -1,12 +1,9 @@
 package com.admin.oes;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -32,19 +29,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Statistics extends AppCompatActivity {
 
-    DatabaseReference databaseReference;
     BarChart barChart;
     FirebaseAuth firebaseAuth;
     PieChart pieChart ;
     PieDataSet pieDataSet ;
     List<PieEntry> entries;
     PieData pieData;
-    FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,82 +108,54 @@ public class Statistics extends AppCompatActivity {
 //            mv.setChartView(barChart); // For bounds control
 //            barChart.setMarker(mv);
 
-    pieChart = (PieChart) findViewById(R.id.chart1);
+        pieChart = (PieChart) findViewById(R.id.chart1);
 
 
 
-    //PieEntryLabels = new ArrayList<String>();
+        //PieEntryLabels = new ArrayList<String>();
 
-    AddValuesToPIEENTRY();
+        AddValuesToPIEENTRY();
 
-    pieDataSet = new PieDataSet(entries, "n");
-    pieData = new PieData(pieDataSet);
-            pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-            pieChart.setData(pieData);
-            pieChart.animateY(3000);
+        pieDataSet = new PieDataSet(entries, "n");
+        pieData = new PieData(pieDataSet);
+                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                pieChart.setData(pieData);
+                pieChart.animateY(3000);
         setDataBar();
 
 
-
-}
+    }
     public void AddValuesToPIEENTRY(){
         entries= new ArrayList<>();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Users").child(firebaseUser.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                entries.clear();
-                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    String key = childDataSnapshot.getKey();
-                    String data=childDataSnapshot.child("Correctans").getValue().toString();
-                    Float f=Float.parseFloat(data);
-//                    entries.add(new PieEntry(f,key));
-                }
-                // get total available quest
-                int size = (int) dataSnapshot.getChildrenCount();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         entries.add(new PieEntry(18.5f,"green"));
         entries.add(new PieEntry(26.7f, "yellow"));
         entries.add(new PieEntry(24.0f,"red"));
         entries.add(new PieEntry(30.8f,"blue"));
 
     }
-
     private void setDataBar() {
-        final TextView x=findViewById(R.id.id_key);
+
+        float start = 1f;
+
         final ArrayList<BarEntry> values = new ArrayList<>();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Users").child(firebaseUser.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                values.clear();
-                float i=1;
-                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    String key = childDataSnapshot.getKey();
-                    String data=childDataSnapshot.child("Correctans").getValue().toString();
-                    Float f=Float.parseFloat(data);
-                    values.add(new BarEntry(i,f));
-                   // x.setText(data);
-                    i++;
-                }
                 // get total available quest
-                int size = (int) dataSnapshot.getChildrenCount();
-
-
-
+                float i=1;
+                String parent = dataSnapshot.getKey();
+                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                    values.add(new BarEntry(i,Float.parseFloat(childDataSnapshot.child("Correctans").getValue().toString())));
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-//
+
 //        values.add(new BarEntry(1f, 10));
 //        values.add(new BarEntry(2f, 20));
 //        values.add(new BarEntry(3f, 30));
@@ -196,21 +164,30 @@ public class Statistics extends AppCompatActivity {
 
         final ArrayList<String> xAxisLabel = new ArrayList<>();
         xAxisLabel.add("Temp");
+
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
+
+
         BarDataSet set1;
+
         if (barChart.getData() != null &&
                 barChart.getData().getDataSetCount() > 0) {
             set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
             set1.setValues(values);
             barChart.getData().notifyDataChanged();
             barChart.notifyDataSetChanged();
+
         } else {
             set1 = new BarDataSet(values, "Stats of student ");
+
             set1.setDrawIcons(false);
+
 //            set1.setColors(ColorTemplate.MATERIAL_COLORS);
+
             /*int startColor = ContextCompat.getColor(this, android.R.color.holo_blue_dark);
             int endColor = ContextCompat.getColor(this, android.R.color.holo_blue_bright);
             set1.setGradientColor(startColor, endColor);*/
+
             int startColor1 = ContextCompat.getColor(this, android.R.color.holo_orange_light);
             int startColor2 = ContextCompat.getColor(this, android.R.color.holo_blue_light);
             int startColor3 = ContextCompat.getColor(this, android.R.color.holo_orange_light);
@@ -221,6 +198,7 @@ public class Statistics extends AppCompatActivity {
             int endColor3 = ContextCompat.getColor(this, android.R.color.holo_green_dark);
             int endColor4 = ContextCompat.getColor(this, android.R.color.holo_red_dark);
             int endColor5 = ContextCompat.getColor(this, android.R.color.holo_orange_dark);
+
             List<GradientColor> gradientColors = new ArrayList<>();
             gradientColors.add(new GradientColor(startColor1, endColor1));
             gradientColors.add(new GradientColor(startColor2, endColor2));
@@ -242,7 +220,5 @@ public class Statistics extends AppCompatActivity {
 
 
     }
-
-
 
 }

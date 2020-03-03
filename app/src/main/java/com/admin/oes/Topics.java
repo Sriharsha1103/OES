@@ -52,7 +52,7 @@ public class Topics extends AppCompatActivity {
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     String key = childDataSnapshot.getKey();
-                    listData.add(new TopicModel(key));
+                    listData.add(new TopicModel(key,sub_name));
                 }
 
                 adapter.setlist(listData);
