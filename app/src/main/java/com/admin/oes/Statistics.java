@@ -1,6 +1,7 @@
 package com.admin.oes;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -35,12 +36,13 @@ public class Statistics extends AppCompatActivity {
 
     BarChart barChart;
     FirebaseAuth firebaseAuth;
-    PieChart pieChart ;
-    PieDataSet pieDataSet ;
+    PieChart pieChart;
+    PieDataSet pieDataSet;
     List<PieEntry> entries;
     PieData pieData;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+    ArrayList<BarEntry> values = new ArrayList<>();
+    private BarDataSet set1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,45 +113,100 @@ public class Statistics extends AppCompatActivity {
         pieChart = (PieChart) findViewById(R.id.chart1);
 
 
-
         //PieEntryLabels = new ArrayList<String>();
 
         AddValuesToPIEENTRY();
 
         pieDataSet = new PieDataSet(entries, "n");
         pieData = new PieData(pieDataSet);
-                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                pieChart.setData(pieData);
-                pieChart.animateY(3000);
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieChart.setData(pieData);
+        pieChart.animateY(3000);
         setDataBar();
 
 
     }
-    public void AddValuesToPIEENTRY(){
-        entries= new ArrayList<>();
-        entries.add(new PieEntry(18.5f,"green"));
+
+    public void AddValuesToPIEENTRY() {
+        entries = new ArrayList<>();
+        entries.add(new PieEntry(18.5f, "green"));
         entries.add(new PieEntry(26.7f, "yellow"));
-        entries.add(new PieEntry(24.0f,"red"));
-        entries.add(new PieEntry(30.8f,"blue"));
+        entries.add(new PieEntry(24.0f, "red"));
+        entries.add(new PieEntry(30.8f, "blue"));
 
     }
+
     private void setDataBar() {
 
         float start = 1f;
 
-        final ArrayList<BarEntry> values = new ArrayList<>();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Users").child(firebaseUser.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 // get total available quest
-                float i=1;
+                float i = 1;
                 String parent = dataSnapshot.getKey();
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    values.add(new BarEntry(i,Float.parseFloat(childDataSnapshot.child("Correctans").getValue().toString())));
+                    String v = childDataSnapshot.child("Correctans").getValue().toString();
+                    Log.i("Test-149", v);
+                    Log.i("Test150:", String.valueOf(i));
+                    values.add(new BarEntry(i, Float.parseFloat(v)));
+                    i++;
                 }
+
+                if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+                    //set1 = new BarDataSet(values, "Stats of student ");
+                    set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
+                    set1.setValues(values);
+                    barChart.getData().notifyDataChanged();
+                    barChart.notifyDataSetChanged();
+
+                } else {
+                    set1 = new BarDataSet(values, "Stats of student ");
+
+                    set1.setDrawIcons(false);
+
+           set1.setColors(ColorTemplate.MATERIAL_COLORS);
+
+
+                    int startColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
+                    int endColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_bright);
+                    set1.setGradientColor(startColor, endColor);
+
+                    int startColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
+                    int startColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_light);
+                    int startColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
+                    int startColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_light);
+                    int startColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_light);
+                    int endColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
+                    int endColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_purple);
+                    int endColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_dark);
+                    int endColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_dark);
+                    int endColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_dark);
+
+                    List<GradientColor> gradientColors = new ArrayList<>();
+                    gradientColors.add(new GradientColor(startColor1, endColor1));
+                    gradientColors.add(new GradientColor(startColor2, endColor2));
+                    gradientColors.add(new GradientColor(startColor3, endColor3));
+                    gradientColors.add(new GradientColor(startColor4, endColor4));
+                    gradientColors.add(new GradientColor(startColor5, endColor5));
+
+                    set1.setGradientColors(gradientColors);
+
+                    ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+                    dataSets.add(set1);
+
+                    BarData data = new BarData(dataSets);
+                    data.setValueTextSize(10f);
+                    data.setBarWidth(0.9f);
+
+                    barChart.setData(data);
+                }
+
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -168,8 +225,8 @@ public class Statistics extends AppCompatActivity {
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
 
 
-        BarDataSet set1;
 
+/*
         if (barChart.getData() != null &&
                 barChart.getData().getDataSetCount() > 0) {
             set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
@@ -184,9 +241,9 @@ public class Statistics extends AppCompatActivity {
 
 //            set1.setColors(ColorTemplate.MATERIAL_COLORS);
 
-            /*int startColor = ContextCompat.getColor(this, android.R.color.holo_blue_dark);
+            *//*int startColor = ContextCompat.getColor(this, android.R.color.holo_blue_dark);
             int endColor = ContextCompat.getColor(this, android.R.color.holo_blue_bright);
-            set1.setGradientColor(startColor, endColor);*/
+            set1.setGradientColor(startColor, endColor);*//*
 
             int startColor1 = ContextCompat.getColor(this, android.R.color.holo_orange_light);
             int startColor2 = ContextCompat.getColor(this, android.R.color.holo_blue_light);
@@ -216,7 +273,7 @@ public class Statistics extends AppCompatActivity {
             data.setBarWidth(0.9f);
 
             barChart.setData(data);
-        }
+        }*/
 
 
     }
