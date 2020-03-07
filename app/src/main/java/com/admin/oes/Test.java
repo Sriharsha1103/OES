@@ -34,9 +34,9 @@ import java.util.Date;
 public class Test extends AppCompatActivity {
 
     private ProgressBar progressBar;
-    private TextView quest_tv,marks;
+    private TextView quest_tv, marks;
     int MAX_STEP, selectedId, position = 0;
-    int current_step = 1,corect = 0,Wrong=0;
+    int current_step = 1, corect = 0, Wrong = 0;
     ArrayList<String> que = new ArrayList<String>();
     ArrayList<String> A = new ArrayList<String>();
     ArrayList<String> B = new ArrayList<String>();
@@ -46,18 +46,23 @@ public class Test extends AppCompatActivity {
     ArrayList<String> key = new ArrayList<String>();
     ArrayList<String> marksa = new ArrayList<String>();
     ArrayList<String> dbans = new ArrayList<String>();
+    ArrayList<String> dques = new ArrayList<String>();
+    ArrayList<String> dcoreans = new ArrayList<String>();
     private RadioGroup radioquestionGroup;
     private RadioButton radioans;
-    RadioButton Ar,Br,Cr,Dr;
+    RadioButton Ar, Br, Cr, Dr;
     String keyi;
     FirebaseAuth firebaseAuth;
+    private QuestionModel questionModel;
+    private ArrayList<QuestionModel> myList;
+    private SharedPreferences sharedPreferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        Toolbar toolbar =  findViewById(R.id.toolbartest);
+        Toolbar toolbar = findViewById(R.id.toolbartest);
         setSupportActionBar(toolbar);
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -65,6 +70,7 @@ public class Test extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.dark));
         setTitle("Progress");
         getSupportActionBar().setSubtitle("");
+        sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -76,16 +82,18 @@ public class Test extends AppCompatActivity {
         Cr = findViewById(R.id.c);
         Dr = findViewById(R.id.d);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Tests/"+ keyi).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Tests/" + keyi).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 // get total available quest
                 MAX_STEP = (int) dataSnapshot.getChildrenCount();
-                Toast.makeText(Test.this, ""+MAX_STEP, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Test.this, "" + MAX_STEP, Toast.LENGTH_SHORT).show();
 
                 for (int i = 1; i <= MAX_STEP; i++) {
                     dbans.add("");
+                    dcoreans.add("");
+                    dques.add("");
                 }
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
@@ -102,6 +110,7 @@ public class Test extends AppCompatActivity {
                 steppedprogress();
                 starttest(0);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -110,9 +119,9 @@ public class Test extends AppCompatActivity {
 
     }
 
-    public void starttest(int pos){
+    public void starttest(int pos) {
 
-        if (pos <= MAX_STEP-1) {
+        if (pos <= MAX_STEP - 1) {
             quest_tv.setText(que.get(pos));
             marks.setText("Marks: " + marksa.get(pos));
             Ar.setText(A.get(pos));
@@ -123,24 +132,20 @@ public class Test extends AppCompatActivity {
         }
     }
 
-    public void setans(int pro){
+    public void setans(int pro) {
         radioquestionGroup = findViewById(R.id.radioGroup);
-        selectedId=radioquestionGroup.getCheckedRadioButtonId();
-        radioans =(RadioButton)findViewById(selectedId);
-        if (selectedId == -1){
-            dbans.set(pro,"0");
+        selectedId = radioquestionGroup.getCheckedRadioButtonId();
+        radioans = (RadioButton) findViewById(selectedId);
+        if (selectedId == -1) {
+            dbans.set(pro, "Ntg selected");
             //TODO: Tommor never dies
         } else {
-            if (radioans.getText().equals(ans.get(pro))){
-                dbans.set(pro,"1");
-                corect++;
-            }
-            else {
-                dbans.set(pro,"0");
-//                corect--;
+            if (radioans.getText().equals(ans.get(pro))) {
+                dbans.set(pro, radioans.getText().toString());
+            } else {
+                dbans.set(pro, radioans.getText().toString());
             }
         }
-        Log.d("Taggee" , String.valueOf(corect));
         radioquestionGroup.clearCheck();
     }
 
@@ -153,16 +158,18 @@ public class Test extends AppCompatActivity {
         progressBar.setProgress(current_step);
         progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 
-        ( findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current_step != 1){backStep(current_step);} else {
+                if (current_step != 1) {
+                    backStep(current_step);
+                } else {
                     Toast.makeText(Test.this, "First question", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        ( findViewById(R.id.lyt_next)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.lyt_next)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextStep(current_step);
@@ -181,16 +188,20 @@ public class Test extends AppCompatActivity {
         }
         TextView tv = findViewById(R.id.next_test);
 
-        if(tv.getText().equals("Submit")){
+        if (tv.getText().equals("Submit")) {
             Wrong = MAX_STEP - corect;
             showtestexitDialog();
         }
 
-        if (current_step >= MAX_STEP){tv.setText("Submit");} else { tv.setText("Next");}
+        if (current_step >= MAX_STEP) {
+            tv.setText("Submit");
+        } else {
+            tv.setText("Next");
+        }
 
         //TODO:Guess it's being called 2 times at last
 
-        if (current_step >= MAX_STEP+1){
+        if (current_step >= MAX_STEP + 1) {
             current_step--;
             setans(position);
             //  Toast.makeText(this, corect+"", Toast.LENGTH_SHORT).show();
@@ -199,7 +210,7 @@ public class Test extends AppCompatActivity {
             position++;
         }
         progressBar.setProgress(current_step);
-        setans(position -1);
+        setans(position - 1);
         starttest(position);
     }
 
@@ -212,8 +223,8 @@ public class Test extends AppCompatActivity {
         }
 
         progressBar.setProgress(current_step);
-        if (position >= 0){
-            setans(position -1);
+        if (position >= 0) {
+            setans(position - 1);
             starttest(position);
         }
 
@@ -231,27 +242,43 @@ public class Test extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        ( dialog.findViewById(R.id.bt_submit)).setOnClickListener(new View.OnClickListener() {
+        (dialog.findViewById(R.id.bt_submit)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Date d = new Date();
-                CharSequence s  = DateFormat.format("MMMM d, yyyy HH:mm:ss", d.getTime());
+                CharSequence s = DateFormat.format("MMMM d, yyyy HH:mm:ss", d.getTime());
                 SharedPreferences sharedPreferences;
                 sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi);
-                databaseReference.child("Name").setValue(sharedPreferences.getString("name","0"));
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() + "/Exams/" + keyi);
+                databaseReference.child("Name").setValue(sharedPreferences.getString("name", "0"));
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
-                databaseReference.child("Correctans").setValue(radioans.getText());
+                databaseReference.child("Correctans").setValue(corect);
                 databaseReference.child("wrongans").setValue(Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
-                DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi + "/Ans");
-
-                for (int i = 0; i < dbans.size() ; i++){
-                    databaseReference2.child(String.valueOf(i)).setValue(dbans.get(i));
+                Log.d("Subbmitted", "kduhasuyfj");
+                myList = new ArrayList<>();
+                QuestionsModel model = new QuestionsModel();
+                for (int j = 0; j < dbans.size(); j++) {
+                    questionModel = new QuestionModel();
+                    questionModel.setAnswer(dbans.get(j));
+                    questionModel.setCorrectAnswer(ans.get(j));
+                    questionModel.setQuestionNumber(que.get(j));
+                    myList.add(questionModel);
                 }
 
+                model.setQuestions(myList);
+                databaseReference.child(keyi).setValue(model);
+                Log.d("correct", String.valueOf(corect));
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("LastTakenTest",keyi);
+                editor.putString("lastScore",String.valueOf(corect));
+                editor.putString("lastwrong",String.valueOf(Wrong));
+                editor.apply();
+                    /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
+                    databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));
+                    databaseReference.child("Answer").child(String.valueOf(j)).setValue(dbans.get(j));*/
 
                 Toast.makeText(Test.this, "Submitted..", Toast.LENGTH_SHORT).show();
                 finish();
@@ -259,7 +286,7 @@ public class Test extends AppCompatActivity {
             }
         });
 
-        ( dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+        (dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Test.this, "Back clicked", Toast.LENGTH_SHORT).show();

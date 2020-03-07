@@ -1,27 +1,92 @@
 package com.admin.oes;
 
+import java.util.ArrayList;
+
 public class StatisticsModel {
-    String test_name,test_date;
-
-    public StatisticsModel(String test_name,String test_date)
-    {
-        this.test_name = test_name;
-        this.test_date=test_date;
+    String Test_Name,Name, TotalQ,Correctans , wrongans , Time , Teacher, ID;
+    ArrayList<QuestionModel> question;
+    public StatisticsModel(String Test_name, String name, String totalQ, String correctans, String wrongans, String time, String teacher, String ID, ArrayList<QuestionModel> question) {
+        this.Test_Name=Test_name;
+        Name = name;
+        TotalQ = totalQ;
+        Correctans = correctans;
+        this.wrongans = wrongans;
+        Time = time;
+        Teacher = teacher;
+        this.ID = ID;
+        this.question=question;
     }
 
-    public String getTest_name() {
-        return test_name;
+
+    public ArrayList<QuestionModel> getQuestion() {
+        return question;
     }
 
-    public void setTest_name(String test_name) {
-        this.test_name = test_name;
+    public void setQuestion(ArrayList<QuestionModel> question) {
+        this.question = question;
     }
 
-    public String getTest_date() {
-        return test_date;
+    public String getTest_Name() {
+        return Test_Name;
     }
 
-    public void setTest_date(String test_date) {
-        this.test_date = test_date;
+    public void setTest_Name(String test_Name) {
+        Test_Name = test_Name;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getTotalQ() {
+        return TotalQ;
+    }
+
+    public void setTotalQ(String totalQ) {
+        TotalQ = totalQ;
+    }
+
+    public String getCorrectans() {
+        return Correctans;
+    }
+
+    public void setCorrectans(String correctans) {
+        Correctans = correctans;
+    }
+
+    public String getWrongans() {
+        return wrongans;
+    }
+
+    public void setWrongans(String wrongans) {
+        this.wrongans = wrongans;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public String getTeacher() {
+        return Teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        Teacher = teacher;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

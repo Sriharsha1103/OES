@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -48,6 +49,10 @@ public class PracticeTests extends AppCompatActivity {
     RadioButton Ar,Br,Cr,Dr;
     String keyi,sub;
     FirebaseAuth firebaseAuth;
+    private QuestionModel questionModel;
+    private ArrayList<QuestionModel> myList;
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,8 @@ public class PracticeTests extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.dark));
         setTitle("Progress");
         getSupportActionBar().setSubtitle("");
+        sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
+
         firebaseAuth = FirebaseAuth.getInstance();
         Intent intent = getIntent();
         keyi = intent.getStringExtra("td");
@@ -89,7 +96,8 @@ public class PracticeTests extends AppCompatActivity {
                     B.add(childDataSnapshot.child("OPT B").getValue().toString());
                     C.add(childDataSnapshot.child("OPT C").getValue().toString());
                     D.add(childDataSnapshot.child("OPT D").getValue().toString());
-                    ans.add(childDataSnapshot.child("CORRECT ANS").getValue().toString());
+                    if (childDataSnapshot.hasChild("CORRECT ANS")){ans.add(childDataSnapshot.child("CORRECT ANS").getValue().toString());} else {ans.add("Not aval");}
+
 //                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
                 }
@@ -104,11 +112,10 @@ public class PracticeTests extends AppCompatActivity {
 
     }
 
-    public void starttest(int pos){
+    public void starttest(int pos) {
 
-        if (pos <= MAX_STEP-1) {
+        if (pos <= MAX_STEP - 1) {
             quest_tv.setText(que.get(pos));
-      //      marks.setText("Marks: " + marksa.get(pos));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
             Cr.setText(C.get(pos));
@@ -117,45 +124,43 @@ public class PracticeTests extends AppCompatActivity {
         }
     }
 
-    public void setans(int pro){
+    public void setans(int pro) {
         radioquestionGroup = findViewById(R.id.radioGroup);
-        selectedId=radioquestionGroup.getCheckedRadioButtonId();
-        radioans =(RadioButton)findViewById(selectedId);
-        if (selectedId == -1){
-            dbans.set(pro,"0");
+        selectedId = radioquestionGroup.getCheckedRadioButtonId();
+        radioans = (RadioButton) findViewById(selectedId);
+        if (selectedId == -1) {
+            dbans.set(pro, "Ntg selected");
             //TODO: Tommor never dies
         } else {
-            if (radioans.getText().equals(ans.get(pro))){
-                dbans.set(pro,"1");
-                corect++;
+            if (radioans.getText().equals(ans.get(pro))) {
+                dbans.set(pro, radioans.getText().toString());
+            } else {
+                dbans.set(pro, radioans.getText().toString());
             }
-//            else {
-//                dbans.set(pro,"0");
-//                corect--;
-//            }
         }
-        Log.d("Taggee" , String.valueOf(corect));
         radioquestionGroup.clearCheck();
     }
 
     private void steppedprogress() {
         quest_tv = (TextView) findViewById(R.id.question);
-     //   marks = findViewById(R.id.marks);
+        quest_tv.setMovementMethod(new ScrollingMovementMethod());
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setMax(MAX_STEP);
         progressBar.setProgress(current_step);
         progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 
-        ((LinearLayout) findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current_step != 1){backStep(current_step);} else {
+                if (current_step != 1) {
+                    backStep(current_step);
+                } else {
                     Toast.makeText(PracticeTests.this, "First question", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        ((LinearLayout) findViewById(R.id.lyt_next)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.lyt_next)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextStep(current_step);
@@ -174,16 +179,20 @@ public class PracticeTests extends AppCompatActivity {
         }
         TextView tv = findViewById(R.id.next_test);
 
-        if(tv.getText().equals("Submit")){
+        if (tv.getText().equals("Submit")) {
             Wrong = MAX_STEP - corect;
             showtestexitDialog();
         }
 
-        if (current_step >= MAX_STEP){tv.setText("Submit");} else { tv.setText("Next");}
+        if (current_step >= MAX_STEP) {
+            tv.setText("Submit");
+        } else {
+            tv.setText("Next");
+        }
 
         //TODO:Guess it's being called 2 times at last
 
-        if (current_step >= MAX_STEP+1){
+        if (current_step >= MAX_STEP + 1) {
             current_step--;
             setans(position);
             //  Toast.makeText(this, corect+"", Toast.LENGTH_SHORT).show();
@@ -192,7 +201,7 @@ public class PracticeTests extends AppCompatActivity {
             position++;
         }
         progressBar.setProgress(current_step);
-        setans(position -1);
+        setans(position - 1);
         starttest(position);
     }
 
@@ -205,12 +214,14 @@ public class PracticeTests extends AppCompatActivity {
         }
 
         progressBar.setProgress(current_step);
-        if (position >= 0){
-            setans(position -1);
+        if (position >= 0) {
+            setans(position - 1);
             starttest(position);
         }
 
     }
+
+    //Exit Dialog
     private void showtestexitDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
@@ -222,35 +233,51 @@ public class PracticeTests extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        ( dialog.findViewById(R.id.bt_submit)).setOnClickListener(new View.OnClickListener() {
+        (dialog.findViewById(R.id.bt_submit)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Date d = new Date();
-                CharSequence s  = DateFormat.format("MMMM d, yyyy HH:mm:ss", d.getTime());
+                CharSequence s = DateFormat.format("MMMM d, yyyy HH:mm:ss", d.getTime());
                 SharedPreferences sharedPreferences;
                 sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi);
-                databaseReference.child("Name").setValue(sharedPreferences.getString("name","0"));
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() + "/Exams/" + keyi);
+                databaseReference.child("Name").setValue(sharedPreferences.getString("name", "0"));
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
-                databaseReference.child("Correctans").setValue(radioans.getText());
+                databaseReference.child("Correctans").setValue(corect);
                 databaseReference.child("wrongans").setValue(Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
-                DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() +"/Exams/" + keyi + "/Ans");
-
-                for (int i = 0; i < dbans.size() ; i++){
-                    databaseReference2.child(String.valueOf(i)).setValue(dbans.get(i));
+                Log.d("Subbmitted", "kduhasuyfj");
+                myList = new ArrayList<>();
+                QuestionsModel model = new QuestionsModel();
+                for (int j = 0; j < dbans.size(); j++) {
+                    questionModel = new QuestionModel();
+                    questionModel.setAnswer(dbans.get(j));
+                    questionModel.setCorrectAnswer(ans.get(j));
+                    questionModel.setQuestionNumber(que.get(j));
+                    myList.add(questionModel);
                 }
 
+                model.setQuestions(myList);
+                databaseReference.child(keyi).setValue(model);
+                Log.d("correct", String.valueOf(corect));
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("LastTakenTest",keyi);
+                editor.putString("lastScore",String.valueOf(corect));
+                editor.putString("lastwrong",String.valueOf(Wrong));
+                editor.apply();
+                    /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
+                    databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));
+                    databaseReference.child("Answer").child(String.valueOf(j)).setValue(dbans.get(j));*/
 
                 Toast.makeText(PracticeTests.this, "Submitted..", Toast.LENGTH_SHORT).show();
-               finish();
+                finish();
                 dialog.dismiss();
             }
         });
 
-        ( dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
+        (dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(PracticeTests.this, "Back clicked", Toast.LENGTH_SHORT).show();
@@ -260,5 +287,6 @@ public class PracticeTests extends AppCompatActivity {
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+
     }
 }

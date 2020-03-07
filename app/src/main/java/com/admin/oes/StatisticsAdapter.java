@@ -2,6 +2,7 @@ package com.admin.oes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.ViewHolder> {
@@ -35,16 +37,26 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final StatisticsModel ld=listData.get(position);
 
-        holder.test_name.setText(ld.getTest_name());
-        holder.test_date.setText(ld.getTest_date());
+        final String Name = ld.getName();
+        final String TotalQ = ld.getTotalQ();
+        final String Correctans = ld.getCorrectans();
+        final String wrongans = ld.getWrongans();
+        final String Time = ld.getTime();
+        final String Teacher = ld.getTeacher();
+        final String ID = ld.getID();
+        final ArrayList<QuestionModel> ques=ld.getQuestion();
+
+        holder.test_name.setText(ld.getTest_Name());
+        holder.test_date.setText(ld.getTime());
+
+//        Log.d("FASAK" , String.valueOf(ques.size()));
 
         holder.test_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TestDetails.class);
-                intent.putExtra("test_name" , ld.getTest_name());
-                // intent.putExtra("test_type","TESTS");
-                v.getContext().startActivity(intent);
+                intent.putExtra("test_name" , ld.getTest_Name());
+                 v.getContext().startActivity(intent);
             }
         });
     }

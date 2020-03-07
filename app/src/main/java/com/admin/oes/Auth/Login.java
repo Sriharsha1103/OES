@@ -190,7 +190,7 @@ public class Login extends AppCompatActivity {
                     editor.apply();
 
 
-                    mCountDownTimer = new CountDownTimer(4000, 1000) {
+                    mCountDownTimer = new CountDownTimer(2000, 500) {
                         public void onTick(long millisUntilFinished) {
 
                         }

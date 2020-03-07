@@ -1,22 +1,22 @@
 package com.admin.oes;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.model.GradientColor;
@@ -36,43 +36,48 @@ public class Statistics extends AppCompatActivity {
 
     BarChart barChart;
     FirebaseAuth firebaseAuth;
-    PieChart pieChart;
-    PieDataSet pieDataSet;
-    List<PieEntry> entries;
-    PieData pieData;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     ArrayList<BarEntry> values = new ArrayList<>();
     private BarDataSet set1;
+    List<StatisticsModel> listData;
+    RecyclerView rv;
+    StatisticsAdapter adapter;
+    public  ArrayList<String> question=new ArrayList<>() ;
+    public ArrayList<String> canswers =new ArrayList<>() ;
+    public ArrayList<ArrayList> x ;
+    public ArrayList<String> ganswers =new ArrayList<>() ;
+     ArrayList<String> xAxisLabel = new ArrayList<>();
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         barChart = findViewById(R.id.barchart);
+        listData = new ArrayList<>();
+        adapter = new StatisticsAdapter(Statistics.this);
+        rv=(RecyclerView)findViewById(R.id.id_user_test_details_recycler_view);
+        sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         //  barChart.setOnChartValueSelectedListener(DetailsDisplay.this);
-
+        {
         barChart.setDrawBarShadow(false);
-        barChart.setTouchEnabled(false);
+        barChart.setTouchEnabled(true);
         barChart.setDragEnabled(false);
         barChart.setScaleEnabled(false);
         barChart.setScaleXEnabled(false);
         barChart.setScaleYEnabled(false);
         barChart.setDrawValueAboveBar(true);
-
         barChart.getDescription().setEnabled(false);
-
         // if more than 60 entries are displayed in the barChart, no values will be
         // drawn
         barChart.setMaxVisibleValueCount(60);
-
         // scaling can now only be done on x- and y-axis separately
         barChart.setPinchZoom(false);
-
         barChart.setDrawGridBackground(false);
         // barChart.setDrawYLabels(false);
-
         //    ValueFormatter xAxisFormatter = new DayAxisValueFormatter(barChart);
-
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
@@ -105,36 +110,40 @@ public class Statistics extends AppCompatActivity {
         l.setFormSize(9f);
         l.setTextSize(11f);
         l.setXEntrySpace(4f);
+    }
 
-//            XYMarkerView mv = new XYMarkerView(this, xAxisFormatter);
-//            mv.setChartView(barChart); // For bounds control
-//            barChart.setMarker(mv);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Users/"+ firebaseUser.getUid()+"/Exams").addValueEventListener(new ValueEventListener() {
+            @Override
 
-        pieChart = (PieChart) findViewById(R.id.chart1);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listData.clear();
+                x=new ArrayList<>();
+                for (final DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                    String Test_Name=childDataSnapshot.getKey();
+                    QuestionsModel questionModel = childDataSnapshot.child(Test_Name).getValue(QuestionsModel.class);
+                    Log.d("data", String.valueOf(question.size()));
+                    String Name = childDataSnapshot.child("Name").getValue().toString();
+                    String TotalQ = childDataSnapshot.child("TotalQ").getValue().toString();
+                    String Correctans = childDataSnapshot.child("Correctans").getValue().toString();
+                    String wrongans = childDataSnapshot.child("wrongans").getValue().toString();
+                    String Time = childDataSnapshot.child("Time").getValue().toString();
+                    String Teacher = childDataSnapshot.child("Teacher").getValue().toString();
+                    String ID = childDataSnapshot.child("ID").getValue().toString();
+                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
+                    Log.d("data12", String.valueOf(questionModel.getQuestions()));
+                }
+                adapter.setlist(listData);
+                rv.setAdapter(adapter);
+                }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
 
-
-        //PieEntryLabels = new ArrayList<String>();
-
-        AddValuesToPIEENTRY();
-
-        pieDataSet = new PieDataSet(entries, "n");
-        pieData = new PieData(pieDataSet);
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieChart.setData(pieData);
-        pieChart.animateY(3000);
         setDataBar();
-
-
     }
 
-    public void AddValuesToPIEENTRY() {
-        entries = new ArrayList<>();
-        entries.add(new PieEntry(18.5f, "green"));
-        entries.add(new PieEntry(26.7f, "yellow"));
-        entries.add(new PieEntry(24.0f, "red"));
-        entries.add(new PieEntry(30.8f, "blue"));
-
-    }
 
     private void setDataBar() {
 
@@ -144,17 +153,16 @@ public class Statistics extends AppCompatActivity {
         databaseReference.child("Users").child(firebaseUser.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                // get total available quest
                 float i = 1;
                 String parent = dataSnapshot.getKey();
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     String v = childDataSnapshot.child("Correctans").getValue().toString();
-                    Log.i("Test-149", v);
-                    Log.i("Test150:", String.valueOf(i));
                     values.add(new BarEntry(i, Float.parseFloat(v)));
                     i++;
                 }
+
+
+                barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
 
                 if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
                     //set1 = new BarDataSet(values, "Stats of student ");
@@ -168,7 +176,7 @@ public class Statistics extends AppCompatActivity {
 
                     set1.setDrawIcons(false);
 
-           set1.setColors(ColorTemplate.MATERIAL_COLORS);
+                    set1.setColors(ColorTemplate.MATERIAL_COLORS);
 
 
                     int startColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
@@ -219,10 +227,7 @@ public class Statistics extends AppCompatActivity {
 //        values.add(new BarEntry(4f, 40));
 //        values.add(new BarEntry(5f, 50));
 
-        final ArrayList<String> xAxisLabel = new ArrayList<>();
-        xAxisLabel.add("Temp");
 
-        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
 
 
 
@@ -277,5 +282,4 @@ public class Statistics extends AppCompatActivity {
 
 
     }
-
 }
