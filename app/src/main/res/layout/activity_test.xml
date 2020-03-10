@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/grey_3"
-        app:titleTextColor="@color/dark"
-        app:subtitleTextColor="@color/dark"
+        app:titleTextColor="@color/black"
+        app:subtitleTextColor="@color/black"
         app:contentInsetStartWithNavigation="0dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>

@@ -3,6 +3,7 @@ package com.admin.oes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -94,5 +95,10 @@ public class Teacher extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void studentstats(View view) {
+        Intent i=new Intent(getApplicationContext(),StudentsData.class);
+        startActivity(i);
     }
 }

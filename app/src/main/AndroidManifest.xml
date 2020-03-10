@@ -13,11 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Statistics"></activity>
+        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".StudentsStatistics" />
+        <activity android:name=".StudentsData" />
+        <activity android:name=".Statistics" />
         <activity android:name=".TestDetails" />
-        <activity android:name=".Home">
-
-        </activity>
+        <activity android:name=".Home" />
         <activity android:name=".PracticeTests" />
         <activity android:name=".Topics" />
         <activity android:name=".Subjects" />
@@ -27,7 +28,7 @@
         <activity
             android:name=".Test"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Auth.Login" >
+        <activity android:name=".Auth.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

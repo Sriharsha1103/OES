@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.admin.oes.ChangePassword;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -135,6 +136,11 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
+    }
+
+    public void ForgotPassword(View view) {
+        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
+        startActivity(i);
     }
 
     private class Firebaseretrive extends AsyncTask<Void, Void, Void> {

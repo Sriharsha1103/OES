@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/header</item>
         <item name="colorPrimaryDark">@color/load</item>
-        <item name="colorAccent">@color/dark</item>
+        <item name="colorAccent">@color/background</item>
     </style>
 
 
@@ -22,7 +22,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Button.Accent.Borderless" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:textColor">@color/textcolor</item>
+        <item name="android:textColor">@color/textColor</item>
     </style>
     <style name="Button.Accent" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/orange_500</item>
@@ -30,7 +30,7 @@
     </style>
 
     <style name="MyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:textColor">@color/textcolor</item>
+        <item name="android:textColor">@color/textColor</item>
         <item name="buttonTint">@color/orange_500</item>
     </style>
 

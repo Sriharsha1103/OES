@@ -17,6 +17,9 @@ public class StatisticsModel {
         this.question=question;
     }
 
+    public StatisticsModel(String name) {
+        Name = name;
+    }
 
     public ArrayList<QuestionModel> getQuestion() {
         return question;

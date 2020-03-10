@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/dark"
+    android:background="@color/overlay_dark_70"
     tools:context=".Profile">
 
     <androidx.cardview.widget.CardView
@@ -36,15 +36,27 @@
                     android:text="Name"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/grey_60" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please wait..."
-                    android:id="@+id/profile_name"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/profile_name"
+                        android:layout_width="331dp"
+                        android:layout_height="wrap_content"
+                        android:text="Please wait..."
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/pink"
+                        android:textStyle="bold" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@color/blue_A100"
+                        android:onClick="name"
+                        android:src="@drawable/ic_edit"/>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -84,13 +96,14 @@
                     android:textColor="@color/grey_60" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Please wait..."
                     android:id="@+id/profile_email"
+                    android:layout_width="331dp"
+                    android:layout_height="wrap_content"
+                    android:text="Please wait..."
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/pink"
                     android:textStyle="bold" />
+
 
             </LinearLayout>
 
@@ -125,24 +138,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Roll NO"
+                    android:text="Roll Number"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/grey_60" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please wait..."
-                    android:id="@+id/profile_rollno"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/profile_rollno"
+                        android:layout_width="331dp"
+                        android:layout_height="wrap_content"
+                        android:text="Please wait..."
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/pink"
+                        android:textStyle="bold" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@color/blue_A100"
+                        android:onClick="roll"
+                        android:src="@drawable/ic_edit"/>
+                </LinearLayout>
 
             </LinearLayout>
 
 
 
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 
@@ -155,6 +181,8 @@
         android:visibility="visible"
         app:cardCornerRadius="4dp"
         app:cardElevation="2dp">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,24 +199,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone NO"
+                    android:text="Phone Number"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/grey_60" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please wait..."
-                    android:id="@+id/profile_phoneno"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/profile_phoneno"
+                        android:layout_width="331dp"
+                        android:layout_height="wrap_content"
+                        android:text="Please wait..."
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/pink"
+                        android:textStyle="bold" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@color/blue_A100"
+                        android:onClick="phone"
+                        android:src="@drawable/ic_edit"/>
+                </LinearLayout>
 
             </LinearLayout>
 
 
 
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 
