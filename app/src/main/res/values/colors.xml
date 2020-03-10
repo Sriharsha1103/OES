@@ -2,16 +2,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="header">#30334F</color>
     <color name="textColor" tools:ignore="MissingDefaultResource">#FFFFFF</color>
-    <color name="pink">#FF6C89</color>
-    <color name="background">#B3B3BE</color>
-    <color name="load">#549EA2</color>
-    <color name="kindadark">#BD2E3F</color>
+    <color name="pink">#FFEAEE</color>
+    <color name="background">#DEDEE2</color>
+    <color name="load">#87C7CC</color>
+    <color name="yellow">#FF9800</color>
     <color name="colorAccent">#494646</color>
-    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F89292</color>
     <color name="colorPrimary">#574F4F</color>
     <color name="black" tools:override="true">#6A6A6F</color>    //Textinput outline colour
 
-    <color name="colorAccentDark">#7E5670</color>
+    <color name="green">#3F5A20</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>

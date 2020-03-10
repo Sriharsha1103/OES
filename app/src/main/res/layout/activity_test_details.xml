@@ -8,6 +8,7 @@
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
+    android:background="@color/header"
     android:layout_height="match_parent"
     android:id="@+id/id_user_test_questions_details"/>
 

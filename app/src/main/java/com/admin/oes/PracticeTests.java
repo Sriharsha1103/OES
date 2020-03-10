@@ -62,7 +62,7 @@ public class PracticeTests extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        setTitle("Progress");
+
         getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
@@ -70,6 +70,7 @@ public class PracticeTests extends AppCompatActivity {
         Intent intent = getIntent();
         keyi = intent.getStringExtra("td");
         sub=intent.getStringExtra("sub_name");
+        setTitle(keyi);
         //String parent = dataSnapshot.getKey();
 
 

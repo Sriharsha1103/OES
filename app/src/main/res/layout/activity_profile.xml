@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/overlay_dark_70"
+    android:background="@color/header"
     tools:context=".Profile">
 
     <androidx.cardview.widget.CardView
@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/pink"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
@@ -33,9 +34,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name"
+                    android:text="NAME:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header"
+                    android:textStyle="bold"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,13 +49,13 @@
                         android:layout_height="wrap_content"
                         android:text="Please wait..."
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/pink"
+                        android:textColor="@color/header"
                         android:textStyle="bold" />
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:background="@color/blue_A100"
+                        android:background="@color/yellow"
                         android:onClick="name"
                         android:src="@drawable/ic_edit"/>
                 </LinearLayout>
@@ -80,6 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/background"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
@@ -91,9 +94,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="EMAIL:"
+                    android:textColor="@color/header"
+                    android:textStyle="bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    />
 
                 <TextView
                     android:id="@+id/profile_email"
@@ -101,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:text="Please wait..."
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/header"
                     android:textStyle="bold" />
 
 
@@ -126,6 +131,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/pink"
             android:orientation="horizontal"
             android:padding="@dimen/spacing_large">
 
@@ -138,9 +144,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Roll Number"
+                    android:text="ROLL NUMBER:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header"
+                    android:textStyle="bold"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,13 +159,13 @@
                         android:layout_height="wrap_content"
                         android:text="Please wait..."
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/pink"
+                        android:textColor="@color/header"
                         android:textStyle="bold" />
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:background="@color/blue_A100"
+                        android:background="@color/yellow"
                         android:onClick="roll"
                         android:src="@drawable/ic_edit"/>
                 </LinearLayout>
@@ -188,6 +195,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/pink"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
@@ -199,9 +207,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number"
+                    android:text="PHONE NUMBER:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header"
+                    android:textStyle="bold" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -213,13 +222,13 @@
                         android:layout_height="wrap_content"
                         android:text="Please wait..."
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/pink"
+                        android:textColor="@color/header"
                         android:textStyle="bold" />
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:background="@color/blue_A100"
+                        android:background="@color/yellow"
                         android:onClick="phone"
                         android:src="@drawable/ic_edit"/>
                 </LinearLayout>
@@ -247,6 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/background"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
@@ -258,9 +268,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gender"
+                    android:text="GENDER:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,7 +279,7 @@
                     android:text="Please wait..."
                     android:id="@+id/profile_gender"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/header"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -293,6 +304,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/background"
             android:padding="@dimen/spacing_large">
 
             <LinearLayout
@@ -304,9 +316,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Branch and Year"
+                    android:text="BRANCH AND YEAR:"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -314,7 +327,7 @@
                     android:text="Please wait..."
                     android:id="@+id/profile_brandhandyear"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/header"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -327,7 +340,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ChangePassWord"
+        android:text="CHANGE PASSWORD"
+        android:background="@color/yellow"
+        android:textStyle="bold"
         android:layout_marginTop="15dp"
         android:onClick="ForgotPassword"
         android:layout_gravity="center"/>

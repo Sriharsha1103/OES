@@ -111,7 +111,7 @@ public class Test extends AppCompatActivity {
                     C.add(childDataSnapshot.child("c").getValue().toString());
                     D.add(childDataSnapshot.child("d").getValue().toString());
                     ans.add(childDataSnapshot.child("ans").getValue().toString());
-                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
+                  //  marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
                 }
                 steppedprogress();
@@ -130,7 +130,7 @@ public class Test extends AppCompatActivity {
 
         if (pos <= MAX_STEP - 1) {
             quest_tv.setText(que.get(pos));
-            marks.setText("Marks: " + marksa.get(pos));
+//            marks.setText("Marks: " + marksa.get(pos));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
             Cr.setText(C.get(pos));
@@ -162,7 +162,7 @@ public class Test extends AppCompatActivity {
     private void steppedprogress() {
         quest_tv = (TextView) findViewById(R.id.question);
         quest_tv.setMovementMethod(new ScrollingMovementMethod());
-        marks = findViewById(R.id.marks);
+       // marks = findViewById(R.id.marks);
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setMax(MAX_STEP);
         progressBar.setProgress(current_step);

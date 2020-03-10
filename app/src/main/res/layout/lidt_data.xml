@@ -12,6 +12,7 @@
         android:layout_marginRight="@dimen/spacing_middle"
         android:layout_marginTop="@dimen/spacing_middle"
         android:visibility="visible"
+        android:background="@color/background"
         android:id="@+id/card_view"
         app:cardCornerRadius="4dp"
         app:cardElevation="2dp">
@@ -20,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/load"
             android:id="@+id/linearlayout_events"
             android:padding="@dimen/spacing_large">
 
@@ -32,10 +34,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Branch and Year"
+                    android:text="Branch and Year: "
                     android:id="@+id/two"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/grey_60" />
+                    android:textColor="@color/header" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,7 +47,7 @@
                     android:text="Please wait..."
                     android:id="@+id/one"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/pink"
+                    android:textColor="@color/yellow"
                     android:textStyle="bold" />
 
             </LinearLayout>

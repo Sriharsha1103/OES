@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/grey_20"
+    android:background="@color/load"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home">
 
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/header">
-
 
         <androidx.appcompat.widget.Toolbar
 
@@ -24,27 +23,30 @@
             app:contentInsetStartWithNavigation="0dp"
             android:onClick="falcon"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:subtitle="welcome to CrackIT"
-            app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-            app:subtitleTextColor="@color/grey_10"
+            app:title="CrackIT"
+            app:titleTextColor="@color/yellow"
             />
 
     </RelativeLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/load"
         android:orientation="horizontal">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:padding="20sp"
+            android:textColorHint="@color/header"
             android:textStyle="bold"
             android:hint="Test Name:"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="test name"
+            android:hint="Name"
+            android:textColorHint="@color/header"
             android:textSize="20sp"
             android:textStyle="bold"
             android:id="@+id/id_test"/>
@@ -55,6 +57,7 @@
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart1"
             android:layout_width="fill_parent"
+            android:background="@color/header"
             android:layout_height="400dp" >
         </com.github.mikephil.charting.charts.PieChart>
 

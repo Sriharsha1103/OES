@@ -22,7 +22,7 @@
             android:text="Logging in..."
             android:id="@+id/login_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/pink" />
+            android:textColor="@color/load" />
 
                 <pl.droidsonroids.gif.GifImageView
                     android:layout_width="200dp"
@@ -94,8 +94,8 @@
                     android:singleLine="true"
                     android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-                    android:textColor="@color/pink"
-                    android:textColorHint="@color/light_blue_50"
+                    android:textColor="@color/load"
+                    android:textColorHint="@color/yellow"
                     android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,7 +114,7 @@
                 android:text="Forgot Password?"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="@color/kindadark"
+                android:textColor="@color/load"
                 android:textStyle="bold" />
 
             <View
@@ -130,7 +130,7 @@
                 android:text="Login"
                 android:id="@+id/login"
                 android:textAllCaps="false"
-                android:textColor="@color/kindadark" />
+                android:textColor="@color/load" />
 
             <View
                 android:layout_width="0dp"
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:text="New user? "
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/kindadark" />
+                    android:textColor="@color/load" />
 
                 <TextView
                     android:id="@+id/sign_up"
@@ -157,7 +157,7 @@
                     android:clickable="true"
                     android:text="Sign Up"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/kindadark"
+                    android:textColor="@color/load"
                     android:textStyle="bold" />
 
             </LinearLayout>

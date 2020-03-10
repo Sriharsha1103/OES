@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
+        android:background="@color/header"
         android:orientation="vertical">
 
 
@@ -42,6 +43,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Full Name"
+                            android:textColor="@color/pink"
                             android:id="@+id/fullname_signup"
                             android:inputType="text"
                             android:maxLines="1"
@@ -58,6 +60,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Username"
+                            android:textColor="@color/pink"
                             android:inputType="text"
                             android:id="@+id/username_signup"
                             android:maxLines="1"
@@ -73,6 +76,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Roll No:"
+                            android:textColor="@color/pink"
                             android:inputType="text"
                             android:id="@+id/rollno_signup"
                             android:maxLines="1"
@@ -88,6 +92,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone No"
+                            android:textColor="@color/pink"
                             android:inputType="number"
                             android:id="@+id/phoneno_signup"
                             android:maxLines="1"
@@ -103,6 +108,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Email"
+                            android:textColor="@color/pink"
                             android:inputType="textEmailAddress"
                             android:id="@+id/email_signup"
                             android:maxLines="1"
@@ -118,6 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
+                            android:textColor="@color/pink"
                             android:inputType="textPassword"
                             android:id="@+id/password_signup"
                             android:maxLines="1"
@@ -128,6 +135,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:padding="10sp"
                         android:text="Please select Gender, Year, Branch below" />
 
 
@@ -139,6 +148,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gender"
+                        android:textColor="@color/header"
+                        android:textStyle="bold"
+                        android:background="@color/load"
                         android:layout_gravity="left"
                         android:theme="@style/Button.Accent"
                         android:onClick="clickAction"
@@ -154,6 +166,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Year"
+                            android:textColor="@color/header"
+                            android:textStyle="bold"
+                            android:background="@color/load"
                             android:layout_gravity="center"
                             android:theme="@style/Button.Accent"
                             android:onClick="clickAction"
@@ -171,7 +186,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:onClick="clickAction"
+                            android:textColor="@color/header"
+                            android:textStyle="bold"
                             android:text="Branch"
+                            android:background="@color/load"
                             android:theme="@style/Button.Accent" />
 
                     </LinearLayout>
@@ -184,7 +202,8 @@
                         android:layout_marginTop="@dimen/spacing_large"
                         android:background="@drawable/btn_rounded_accent"
                         android:text="REGISTER"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/header"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 

@@ -12,6 +12,7 @@
         android:id="@+id/id_key"/>
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="288dp" />
 
@@ -19,6 +20,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/header"
         android:id="@+id/id_user_test_details_recycler_view"/>
 
 
