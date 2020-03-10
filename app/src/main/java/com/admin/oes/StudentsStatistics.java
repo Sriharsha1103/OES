@@ -33,6 +33,7 @@ import java.util.List;
 
 public class StudentsStatistics extends AppCompatActivity {
     BarChart barChart;
+    String role="";
     FirebaseAuth firebaseAuth;
     ArrayList<BarEntry> values = new ArrayList<>();
     private BarDataSet set1;
@@ -51,6 +52,7 @@ public class StudentsStatistics extends AppCompatActivity {
         setContentView(R.layout.activity_students_statistics);
         Intent i=getIntent();
         name=i.getStringExtra("Student_name");
+        setTitle(name);
         uid=i.getStringExtra("Student_uid");
         barChart = findViewById(R.id.barchart);
         listData = new ArrayList<>();
@@ -111,7 +113,8 @@ public class StudentsStatistics extends AppCompatActivity {
             l.setXEntrySpace(4f);
         }
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Users/"+ uid+"/Exams").addValueEventListener(new ValueEventListener() {
             @Override
 
@@ -124,12 +127,13 @@ public class StudentsStatistics extends AppCompatActivity {
                     Log.d("data", String.valueOf(question.size()));
                     String Name = childDataSnapshot.child("Name").getValue().toString();
                     String TotalQ = childDataSnapshot.child("TotalQ").getValue().toString();
+                    String role=databaseReference.child("Users").child("uid").child("Role").toString();
                     String Correctans = childDataSnapshot.child("Correctans").getValue().toString();
                     String wrongans = childDataSnapshot.child("wrongans").getValue().toString();
                     String Time = childDataSnapshot.child("Time").getValue().toString();
                     String Teacher = childDataSnapshot.child("Teacher").getValue().toString();
                     String ID = childDataSnapshot.child("ID").getValue().toString();
-                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
+                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,role,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
                     Log.d("data12", String.valueOf(questionModel.getQuestions()));
                 }
                 adapter.setlist(listData);

@@ -3,12 +3,13 @@ package com.admin.oes;
 import java.util.ArrayList;
 
 public class StatisticsModel {
-    String Test_Name,Name, TotalQ,Correctans , wrongans , Time , Teacher, ID;
+    String Test_Name,Name, TotalQ,role,Correctans , wrongans , Time , Teacher, ID;
     ArrayList<QuestionModel> question;
-    public StatisticsModel(String Test_name, String name, String totalQ, String correctans, String wrongans, String time, String teacher, String ID, ArrayList<QuestionModel> question) {
+    public StatisticsModel(String Test_name, String name, String totalQ, String role,String correctans, String wrongans, String time, String teacher, String ID, ArrayList<QuestionModel> question) {
         this.Test_Name=Test_name;
         Name = name;
         TotalQ = totalQ;
+        this.role=role;
         Correctans = correctans;
         this.wrongans = wrongans;
         Time = time;
@@ -19,6 +20,14 @@ public class StatisticsModel {
 
     public StatisticsModel(String name) {
         Name = name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public ArrayList<QuestionModel> getQuestion() {

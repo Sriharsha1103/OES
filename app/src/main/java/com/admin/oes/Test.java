@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.format.DateFormat;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -33,10 +35,13 @@ import java.util.Date;
 
 public class Test extends AppCompatActivity {
 
+    public int counter;
+    Button button;
+    TextView textView;
     private ProgressBar progressBar;
     private TextView quest_tv, marks;
     int MAX_STEP, selectedId, position = 0;
-    int current_step = 1, corect = 0, Wrong = 0;
+    int current_step = 1, corect = 0, Wrong = 0,answered=0;
     ArrayList<String> que = new ArrayList<String>();
     ArrayList<String> A = new ArrayList<String>();
     ArrayList<String> B = new ArrayList<String>();
@@ -68,7 +73,6 @@ public class Test extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        setTitle("Progress");
         getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
@@ -76,6 +80,9 @@ public class Test extends AppCompatActivity {
 
         Intent intent = getIntent();
         keyi = intent.getStringExtra("testid");
+        setTitle(keyi);
+
+
 
         Ar = findViewById(R.id.a);
         Br = findViewById(R.id.b);
@@ -139,11 +146,14 @@ public class Test extends AppCompatActivity {
         if (selectedId == -1) {
             dbans.set(pro, "Ntg selected");
         } else {
+            answered++;
             if (radioans.getText().equals(ans.get(pro))) {
+
                 dbans.set(pro, radioans.getText().toString());
                 corect++;
             } else {
                 dbans.set(pro, radioans.getText().toString());
+                Wrong++;
             }
         }
         radioquestionGroup.clearCheck();
@@ -189,7 +199,7 @@ public class Test extends AppCompatActivity {
         TextView tv = findViewById(R.id.next_test);
 
         if (tv.getText().equals("Submit")) {
-            Wrong = MAX_STEP-1 - corect;
+//            Wrong = MAX_STEP-1 - corect;
             showtestexitDialog();
         }
 
@@ -254,6 +264,7 @@ public class Test extends AppCompatActivity {
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
                 databaseReference.child("Correctans").setValue(corect);
                 databaseReference.child("wrongans").setValue(Wrong);
+                databaseReference.child("UnAnswered").setValue(MAX_STEP-answered);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
@@ -275,6 +286,7 @@ public class Test extends AppCompatActivity {
                 editor.putString("LastTakenTest",keyi);
                 editor.putString("lastScore",String.valueOf(corect));
                 editor.putString("lastwrong",String.valueOf(Wrong));
+                editor.putString("UNAnswered",String.valueOf(MAX_STEP-answered));
                 editor.apply();
                     /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
                     databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));

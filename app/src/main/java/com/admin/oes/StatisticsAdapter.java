@@ -42,24 +42,23 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.Vi
         final String Correctans = ld.getCorrectans();
         final String wrongans = ld.getWrongans();
         final String Time = ld.getTime();
+        final String role=ld.getRole();
         final String Teacher = ld.getTeacher();
         final String ID = ld.getID();
         final ArrayList<QuestionModel> ques=ld.getQuestion();
 
         holder.test_name.setText(ld.getTest_Name());
         holder.test_date.setText(ld.getTime());
+            holder.test_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, TestDetails.class);
+                    intent.putExtra("test_name", ld.getTest_Name());
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
 
-//        Log.d("FASAK" , String.valueOf(ques.size()));
-
-        holder.test_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, TestDetails.class);
-                intent.putExtra("test_name" , ld.getTest_Name());
-                 v.getContext().startActivity(intent);
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {

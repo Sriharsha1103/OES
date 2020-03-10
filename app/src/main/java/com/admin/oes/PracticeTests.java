@@ -33,6 +33,7 @@ import java.util.Date;
 public class PracticeTests extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView quest_tv;
+    int answered=0;
     int MAX_STEP, selectedId, position = 0;
     int current_step = 1,corect = 0,Wrong=0;
     ArrayList<String> que = new ArrayList<String>();
@@ -131,11 +132,13 @@ public class PracticeTests extends AppCompatActivity {
         if (selectedId == -1) {
             dbans.set(pro, "Ntg selected");
         } else {
+            answered++;
             if (radioans.getText().equals(ans.get(pro))) {
                 dbans.set(pro, radioans.getText().toString());
                 corect++;
             } else {
                 dbans.set(pro, radioans.getText().toString());
+                Wrong++;
             }
         }
         radioquestionGroup.clearCheck();
@@ -180,7 +183,7 @@ public class PracticeTests extends AppCompatActivity {
         TextView tv = findViewById(R.id.next_test);
 
         if (tv.getText().equals("Submit")) {
-            Wrong = MAX_STEP-1 - corect;
+//            Wrong = MAX_STEP-1 - corect;
             showtestexitDialog();
         }
 
@@ -245,6 +248,7 @@ public class PracticeTests extends AppCompatActivity {
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
                 databaseReference.child("Correctans").setValue(corect);
                 databaseReference.child("wrongans").setValue(Wrong);
+                databaseReference.child("UnAnswered").setValue(MAX_STEP-corect-Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
@@ -266,6 +270,8 @@ public class PracticeTests extends AppCompatActivity {
                 editor.putString("LastTakenTest",keyi);
                 editor.putString("lastScore",String.valueOf(corect));
                 editor.putString("lastwrong",String.valueOf(Wrong));
+                editor.putString("UNAnswered",String.valueOf(MAX_STEP-answered));
+
                 editor.apply();
                     /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
                     databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));

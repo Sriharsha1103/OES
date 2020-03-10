@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +43,7 @@ public class Subjects extends AppCompatActivity {
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     String key = childDataSnapshot.getKey();
+                    Log.i("subjects",key);
                     listData.add(new SubjectsModel(key));
                 }
                 adapter.setlist(listData);

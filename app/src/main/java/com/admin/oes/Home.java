@@ -96,7 +96,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         AddValuesToPIEENTRY();
 
-        pieDataSet = new PieDataSet(entries, "n");
+        pieDataSet = new PieDataSet(entries,"");
         pieData = new PieData(pieDataSet);
         pieDataSet.setColors(COLORFUL_COLORS);
         pieChart.setData(pieData);
@@ -145,13 +145,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     }
     public static final int[] COLORFUL_COLORS = {
-            Color.rgb(61, 219, 135), Color.rgb(250, 000, 000)
+            Color.rgb(61, 219, 135),Color.rgb(244,194,13), Color.rgb(250, 000, 000)
     };
 
     public void AddValuesToPIEENTRY() {
         final String test_name = sharedPreferences.getString("LastTakenTest", null);
         final String correct = sharedPreferences.getString("lastScore", null);
         final String wrong = sharedPreferences.getString("lastwrong", null);
+       final String unanswered=sharedPreferences.getString("UNAnswered",null);
+
         assert test_name != null;
         Log.d("correct", String.valueOf(correct));
 
@@ -159,6 +161,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             entries = new ArrayList<>();
             test.setText(test_name);
             entries.add(new PieEntry(Float.parseFloat(correct), "Correct"));
+            entries.add(new PieEntry(Float.parseFloat(unanswered), "UnAnswered"));
             entries.add(new PieEntry(Float.parseFloat(wrong), "Wrong"));
         } else {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -209,7 +212,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             nav_rollno.setText(sharedPreferences.getString("rollno", "NO data found"));
             nav_namec.setText(fb_name_main);
             nav_emailc.setText(fb_email_main);
-            setTitle("Hi, " + fb_name_main);
         }
 
         @Override

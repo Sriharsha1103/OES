@@ -48,6 +48,7 @@ public class Statistics extends AppCompatActivity {
     public ArrayList<String> ganswers =new ArrayList<>() ;
      ArrayList<String> xAxisLabel = new ArrayList<>();
     private SharedPreferences sharedPreferences;
+     String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,8 @@ public class Statistics extends AppCompatActivity {
         l.setTextSize(11f);
         l.setXEntrySpace(4f);
     }
-
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        role=reference.child("Users").child(firebaseUser.getUid()).child("Role").toString();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Users/"+ firebaseUser.getUid()+"/Exams").addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,7 +132,7 @@ public class Statistics extends AppCompatActivity {
                     String Time = childDataSnapshot.child("Time").getValue().toString();
                     String Teacher = childDataSnapshot.child("Teacher").getValue().toString();
                     String ID = childDataSnapshot.child("ID").getValue().toString();
-                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
+                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,role,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
                     Log.d("data12", String.valueOf(questionModel.getQuestions()));
                 }
                 adapter.setlist(listData);
