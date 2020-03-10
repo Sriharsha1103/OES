@@ -189,7 +189,7 @@ public class Test extends AppCompatActivity {
         TextView tv = findViewById(R.id.next_test);
 
         if (tv.getText().equals("Submit")) {
-            Wrong = MAX_STEP - corect;
+            Wrong = MAX_STEP-1 - corect;
             showtestexitDialog();
         }
 

@@ -1,5 +1,6 @@
 package com.admin.oes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -10,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.admin.oes.Auth.Login;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +23,7 @@ public class Profile extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     private EditText profileName;
-    private TextView profileEmail;
+    public TextView profileEmail;
     private EditText profileRollno;
     private EditText profilePhoneno;
     private TextView profileGender;
@@ -73,5 +77,17 @@ public class Profile extends AppCompatActivity {
         databaseReference.child("PhoneNO").setValue(phoneedit);
         Toast.makeText(this,"Phone NUmber Updated",Toast.LENGTH_SHORT).show();
         profilePhoneno.setFocusable(false);
+    }
+
+    public void ForgotPassword(View view) {
+        FirebaseAuth.getInstance().sendPasswordResetEmail(profileEmail.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Profile.this,"Verification Email Sent Successfuly",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

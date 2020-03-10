@@ -1,8 +1,5 @@
 package com.admin.oes.Auth;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -18,7 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.admin.oes.ChangePassword;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.admin.oes.Home;
+import com.admin.oes.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,8 +30,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.admin.oes.Home;
-import com.admin.oes.R;
 
 public class Login extends AppCompatActivity {
 
@@ -139,8 +138,16 @@ public class Login extends AppCompatActivity {
     }
 
     public void ForgotPassword(View view) {
-        Intent i=new Intent(getApplicationContext(), ChangePassword.class);
-        startActivity(i);
+        FirebaseAuth.getInstance().sendPasswordResetEmail(login_username.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Login.this,"Email Sent Successfuly",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
     }
 
     private class Firebaseretrive extends AsyncTask<Void, Void, Void> {
