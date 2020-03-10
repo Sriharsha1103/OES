@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey_900"
+    android:background="@color/header"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:background="@color/load"
+        android:background="@color/header"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -22,7 +22,7 @@
             android:text="Logging in..."
             android:id="@+id/login_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/pink" />
 
                 <pl.droidsonroids.gif.GifImageView
                     android:layout_width="200dp"
@@ -94,7 +94,7 @@
                     android:singleLine="true"
                     android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/pink"
                     android:textColorHint="@color/light_blue_50"
                     android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +114,7 @@
                 android:text="Forgot Password?"
                 android:textAlignment="center"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:textColor="@color/blue_grey_400"
+                android:textColor="@color/kindadark"
                 android:textStyle="bold" />
 
             <View
@@ -126,11 +126,11 @@
                 android:layout_height="55dp"
                 android:layout_marginLeft="-4dp"
                 android:layout_marginRight="-4dp"
-                android:background="@drawable/btn_rounded_green_300"
+                android:background="@drawable/btn_rounded_red"
                 android:text="Login"
                 android:id="@+id/login"
                 android:textAllCaps="false"
-                android:textColor="@color/blue_grey_900" />
+                android:textColor="@color/kindadark" />
 
             <View
                 android:layout_width="0dp"
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:text="New user? "
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/blue_grey_300" />
+                    android:textColor="@color/kindadark" />
 
                 <TextView
                     android:id="@+id/sign_up"
@@ -157,7 +157,7 @@
                     android:clickable="true"
                     android:text="Sign Up"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/green_300"
+                    android:textColor="@color/kindadark"
                     android:textStyle="bold" />
 
             </LinearLayout>

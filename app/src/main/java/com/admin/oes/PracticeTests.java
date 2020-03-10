@@ -130,10 +130,10 @@ public class PracticeTests extends AppCompatActivity {
         radioans = (RadioButton) findViewById(selectedId);
         if (selectedId == -1) {
             dbans.set(pro, "Ntg selected");
-            //TODO: Tommor never dies
         } else {
             if (radioans.getText().equals(ans.get(pro))) {
                 dbans.set(pro, radioans.getText().toString());
+                corect++;
             } else {
                 dbans.set(pro, radioans.getText().toString());
             }
@@ -258,7 +258,7 @@ public class PracticeTests extends AppCompatActivity {
                     questionModel.setQuestionNumber(que.get(j));
                     myList.add(questionModel);
                 }
-
+                Log.i("xyz", String.valueOf(corect));
                 model.setQuestions(myList);
                 databaseReference.child(keyi).setValue(model);
                 Log.d("correct", String.valueOf(corect));

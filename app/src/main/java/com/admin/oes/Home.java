@@ -98,7 +98,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         pieDataSet = new PieDataSet(entries, "n");
         pieData = new PieData(pieDataSet);
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setColors(COLORFUL_COLORS);
         pieChart.setData(pieData);
         pieChart.animateY(3000);
 
@@ -144,6 +144,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         databaseReference.child("Date").setValue(s);
 
     }
+    public static final int[] COLORFUL_COLORS = {
+            Color.rgb(61, 219, 135), Color.rgb(250, 000, 000)
+    };
 
     public void AddValuesToPIEENTRY() {
         final String test_name = sharedPreferences.getString("LastTakenTest", null);

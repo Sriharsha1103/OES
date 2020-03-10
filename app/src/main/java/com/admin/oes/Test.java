@@ -138,10 +138,10 @@ public class Test extends AppCompatActivity {
         radioans = (RadioButton) findViewById(selectedId);
         if (selectedId == -1) {
             dbans.set(pro, "Ntg selected");
-            //TODO: Tommor never dies
         } else {
             if (radioans.getText().equals(ans.get(pro))) {
                 dbans.set(pro, radioans.getText().toString());
+                corect++;
             } else {
                 dbans.set(pro, radioans.getText().toString());
             }
