@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +50,7 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.Vi
 
         holder.test_name.setText(ld.getTest_Name());
         holder.test_date.setText(ld.getTime());
-            holder.test_name.setOnClickListener(new View.OnClickListener() {
+            holder.ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, TestDetails.class);
@@ -67,10 +68,12 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView test_name,test_date;
+        LinearLayout ll;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             test_name=itemView.findViewById(R.id.id_user_test_name);
             test_date=itemView.findViewById(R.id.did_user_test_date);
+            ll=itemView.findViewById(R.id.id_test_details_linear_layout);
         }
     }
 }

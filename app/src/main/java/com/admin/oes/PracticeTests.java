@@ -296,4 +296,8 @@ public class PracticeTests extends AppCompatActivity {
         dialog.getWindow().setAttributes(lp);
 
     }
+
+    public void Quit(View view) {
+        showtestexitDialog();
+    }
 }

@@ -67,13 +67,13 @@ public class Test extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        Toolbar toolbar = findViewById(R.id.toolbartest);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbartest);
+//        setSupportActionBar(toolbar);
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
-        getSupportActionBar().setSubtitle("");
+//        getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -264,7 +264,7 @@ public class Test extends AppCompatActivity {
                 databaseReference.child("TotalQ").setValue(MAX_STEP);
                 databaseReference.child("Correctans").setValue(corect);
                 databaseReference.child("wrongans").setValue(Wrong);
-                databaseReference.child("UnAnswered").setValue(MAX_STEP-answered);
+                databaseReference.child("UnAnswered").setValue(MAX_STEP-corect-Wrong);
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
@@ -286,7 +286,7 @@ public class Test extends AppCompatActivity {
                 editor.putString("LastTakenTest",keyi);
                 editor.putString("lastScore",String.valueOf(corect));
                 editor.putString("lastwrong",String.valueOf(Wrong));
-                editor.putString("UNAnswered",String.valueOf(MAX_STEP-answered));
+                editor.putString("UNAnswered",String.valueOf(MAX_STEP-corect-Wrong));
                 editor.apply();
                     /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
                     databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));
@@ -310,4 +310,7 @@ public class Test extends AppCompatActivity {
         dialog.getWindow().setAttributes(lp);
     }
 
+    public void Quit(View view) {
+        showtestexitDialog();
+    }
 }

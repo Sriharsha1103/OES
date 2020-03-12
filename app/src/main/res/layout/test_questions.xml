@@ -10,15 +10,15 @@
         android:layout_height="wrap_content"
         android:hint="Question: "
         android:textColorHint="@color/header"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textColor="@color/header"
-        android:background="@color/yellow"
+        android:background="@color/load"
         android:id="@+id/id_user_test_question"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@color/load"
+        android:background="@color/background"
         android:orientation="horizontal">
     <TextView
         android:layout_width="wrap_content"
@@ -26,15 +26,35 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/header"
-        android:text="Given Answer: "/>
+        android:text="Correct Answer: "/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correct Answer: "
         android:textStyle="bold"
+        android:textColor="@color/header"
         android:textSize="15sp"
-        android:textColorHint="@color/header"
         android:id="@+id/id_user_test_correct_ans"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/background"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/header"
+            android:text="Given Answer: "/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/header"
+            android:id="@+id/id_user_test_given_ans"/>
     </LinearLayout>
 
     //explanation

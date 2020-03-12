@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="260dp"
     android:layout_height="wrap_content"
-    android:background="@android:color/darker_gray"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:id="@+id/icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:tint="@android:color/white"
+            android:tint="@color/header"
             android:src="@drawable/ic_verified_user_black_24dp" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/spacing_middle"
             android:text="Account created!"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white"
+            android:textColor="@color/header"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -48,8 +48,9 @@
             android:layout_marginTop="@dimen/spacing_small"
             android:text="Your account for OES has been created"
             android:textAlignment="center"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/green" />
+            android:textColor="@color/header" />
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +70,8 @@
             android:paddingLeft="@dimen/spacing_mlarge"
             android:paddingRight="@dimen/spacing_mlarge"
             android:text="Get started"
-            android:textColor="@android:color/white" />
+            android:textStyle="bold"
+            android:textColor="@color/header" />
 
     </LinearLayout>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/load"
+    android:background="@color/header"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home">
 
@@ -23,22 +23,20 @@
             app:contentInsetStartWithNavigation="0dp"
             android:onClick="falcon"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="CrackIT"
-            app:titleTextColor="@color/yellow"
             />
 
     </RelativeLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/load"
+        android:background="@color/yellow"
         android:orientation="horizontal">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:padding="20sp"
-            android:textColorHint="@color/header"
+            android:padding="10sp"
+            android:textColorHint="@color/textColor"
             android:textStyle="bold"
             android:hint="Test Name:"/>
 
@@ -46,21 +44,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:textColorHint="@color/header"
+            android:textColorHint="@color/textColor"
             android:textSize="20sp"
+            android:textColor="@color/yellow"
             android:textStyle="bold"
             android:id="@+id/id_test"/>
 
 
     </LinearLayout>
 
+
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart1"
             android:layout_width="fill_parent"
             android:background="@color/header"
+            android:layout_weight="5"
             android:layout_height="400dp" >
-        </com.github.mikephil.charting.charts.PieChart>
 
+        </com.github.mikephil.charting.charts.PieChart>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_no_test_taken"
+        android:text="No Exam Taken"/>
 
 
 </LinearLayout>

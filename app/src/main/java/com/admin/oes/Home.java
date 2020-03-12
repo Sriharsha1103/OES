@@ -160,10 +160,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (test_name != null) {
             entries = new ArrayList<>();
             test.setText(test_name);
-            entries.add(new PieEntry(Float.parseFloat(correct), "Correct"));
-            entries.add(new PieEntry(Float.parseFloat(unanswered), "UnAnswered"));
-            entries.add(new PieEntry(Float.parseFloat(wrong), "Wrong"));
-        } else {
+            if (Integer.parseInt(correct) != 0) {
+                entries.add(new PieEntry(Float.parseFloat(correct), "Correct"));
+            }
+                if(Integer.parseInt(wrong)!=0) {
+                    entries.add(new PieEntry(Float.parseFloat(wrong), "Wrong"));
+                }
+                    if(Integer.parseInt(unanswered)!=0)
+                    {
+                        entries.add(new PieEntry(Float.parseFloat(unanswered), "UnAnswered"));
+                    }
+
+         } else {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
             databaseReference.child("Users").child(firebaseAuth.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
                 @Override

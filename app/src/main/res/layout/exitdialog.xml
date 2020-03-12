@@ -69,6 +69,7 @@
             android:background="@drawable/btn_rounded_accent"
             android:paddingLeft="@dimen/spacing_mlarge"
             android:paddingRight="@dimen/spacing_mlarge"
+            android:textStyle="bold"
             android:text="Exit"
             android:textColor="@color/header" />
 
