@@ -1,4 +1,4 @@
-package com.admin.oes;
+package com.admin.oes.Teacher_access;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.admin.oes.Event.Model;
+import com.admin.oes.Event.MyAdapter;
+import com.admin.oes.R;
+import com.admin.oes.Tests_Details.TestDetailsModel;
+import com.admin.oes.Topics.TopicModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,49 +22,43 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestDetails extends AppCompatActivity {
+public class QuestionsInTest extends AppCompatActivity {
     DatabaseReference databaseReference;
     private List<TestDetailsModel> listData;
     private RecyclerView rv;
-    private TestDetailsAdapter adapter;
-    FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+    private QuestionsInTestAdapter adapter;
+    String test_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_details);
-
-        Intent i=getIntent();
-        String test_name=i.getStringExtra("test_name");
+        setContentView(R.layout.activity_questions_in_test);
+        Intent i = getIntent();
+        test_name = i.getStringExtra("testname");
         setTitle(test_name);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        adapter = new TestDetailsAdapter(TestDetails.this);
+        adapter = new QuestionsInTestAdapter(QuestionsInTest.this);
 
-        rv = (RecyclerView) findViewById(R.id.id_user_test_questions_details);
+        rv = (RecyclerView) findViewById(R.id.id_questions_in_selected_test);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         listData = new ArrayList<>();
 
-        databaseReference.child("Users").child(firebaseUser.getUid()).child("Exams").child(test_name).child(test_name).child("questions").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Tests").child(test_name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 listData.clear();
-                int i=1;
+
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    String ques =String.valueOf(i)+" "+childDataSnapshot.child("questionNumber").getValue().toString();
-                    String ans=childDataSnapshot.child("answer").getValue().toString();
-                    String cans=childDataSnapshot.child("correctAnswer").getValue().toString();
-                    listData.add(new TestDetailsModel(ques,ans,cans));
-                    adapter.setlist(listData);
-                    rv.setAdapter(adapter);
-                    i++;
+                    String key = childDataSnapshot.child("q").getValue().toString();
+                    listData.add(new TestDetailsModel(key,childDataSnapshot.getKey(),test_name));
+                    Log.i("data1", key);
+                    Log.i("data2", childDataSnapshot.getKey());
+                    Log.i("data3", test_name);
                 }
-                Log.i("questions", String.valueOf(dataSnapshot.getChildrenCount()));
-
-
-
-
+                adapter.setlist(listData);
+                rv.setAdapter(adapter);
             }
 
             @Override

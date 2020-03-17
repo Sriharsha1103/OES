@@ -4,13 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.admin.oes.Tests_Details.TestDetails">
-
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:background="@color/background"
-    android:layout_height="match_parent"
-    android:id="@+id/id_user_test_questions_details"/>
-
+    tools:context="com.admin.oes.Teacher_access.QuestionsInTest">
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/id_questions_in_selected_test"/>
 
 </LinearLayout>

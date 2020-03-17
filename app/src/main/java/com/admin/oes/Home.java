@@ -20,25 +20,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.github.mikephil.charting.charts.BarChart;
+import com.admin.oes.Statistics.Statistics;
+import com.admin.oes.Subjects.Subjects;
+import com.admin.oes.Teacher_access.Teacher;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.model.GradientColor;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,10 +46,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import lecho.lib.hellocharts.model.PieChartData;
-import lecho.lib.hellocharts.model.SliceValue;
-import lecho.lib.hellocharts.view.PieChartView;
 
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,7 +65,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     PieDataSet pieDataSet;
     List<PieEntry> entries;
     PieData pieData;
-    TextView test;
+    TextView test,notesttaken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +76,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         pieChart = (PieChart) findViewById(R.id.chart1);
         test = findViewById(R.id.id_test);
+        notesttaken=findViewById(R.id.id_no_test_taken);
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
 
@@ -159,16 +147,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         if (test_name != null) {
             entries = new ArrayList<>();
+            notesttaken.setVisibility(View.INVISIBLE);
             test.setText(test_name);
             if (Integer.parseInt(correct) != 0) {
                 entries.add(new PieEntry(Float.parseFloat(correct), "Correct"));
             }
-                if(Integer.parseInt(wrong)!=0) {
-                    entries.add(new PieEntry(Float.parseFloat(wrong), "Wrong"));
+                if(Integer.parseInt(unanswered)!=0) {
+                    entries.add(new PieEntry(Float.parseFloat(unanswered), "UnAnswered"));
                 }
-                    if(Integer.parseInt(unanswered)!=0)
+                    if(Integer.parseInt(wrong)!=0)
                     {
-                        entries.add(new PieEntry(Float.parseFloat(unanswered), "UnAnswered"));
+                        entries.add(new PieEntry(Float.parseFloat(wrong), "Wrong"));
                     }
 
          } else {
@@ -186,9 +175,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         }
 
                     }
-                    if (v.equals("") || w.equals(""))
+                    if (v.equals("") || w.equals("")) {
                         Log.i("Test", "No Data to Display");
+
+                    }
                     else {
+                        notesttaken.setVisibility(View.INVISIBLE);
                         entries = new ArrayList<>();
                         test.setText(test_name);
                         entries.add(new PieEntry(Float.parseFloat(v), "Correct"));

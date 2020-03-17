@@ -13,273 +13,54 @@
         <include layout="@layout/toolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
-    <Button
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Statistics of Students"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/header"
-        android:onClick="studentstats"
-        android:background="@color/load"
-        />
-
-    <androidx.core.widget.NestedScrollView
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="vertical">
-
-        <LinearLayout
+        android:layout_gravity="center">
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@color/header"
-            android:paddingLeft="@dimen/spacing_large"
-            android:paddingRight="@dimen/spacing_large">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Test name"
-                    android:textStyle="bold"
-                    android:id="@+id/testname"
-                    android:textColor="@color/load"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:textStyle="bold"
-                    android:hint="Marks"
-                    android:gravity="right"
-                    android:id="@+id/marks"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:padding="@dimen/spacing_large"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@color/background"
-                    android:textColorHint="@color/colorPrimaryDark"
-                    android:gravity="top"
-                    android:hint="Question"
-                    android:inputType="textMultiLine"
-                    android:maxLines="12"
-                    android:textStyle="bold"
-                    android:minLines="7"
-                    android:id="@+id/question"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_large"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="top"
-                    android:hint="Description"
-                    android:inputType="textMultiLine"
-                    android:maxLines="12"
-                    android:minLines="7"
-                    android:textStyle="bold"
-                    android:id="@+id/description"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Option 1"
-                    android:textStyle="bold"
-                    android:id="@+id/o1"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Option 2"
-                    android:id="@+id/o2"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Option 3"
-                    android:id="@+id/o3"
-                    android:textStyle="bold"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Option 4"
-                    android:id="@+id/o4"
-                    android:textStyle="bold"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                android:textColorHint="@color/colorPrimaryDark">
-
-                <androidx.appcompat.widget.AppCompatEditText
-
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:hint="Answer"
-                    android:id="@+id/ans"
-                    android:textStyle="bold"
-                    android:textColor="@color/header"
-                    android:theme="@style/EditText.Yellow" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-
-            <Button
-                android:id="@+id/button_done"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:background="@drawable/btn_rounded_accent"
-                android:text="Done!"
-                android:textStyle="bold"
-                android:textColor="@color/header" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
+            android:layout_height="wrap_content"
+            android:text="Statistics of Students"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/header"
+            android:onClick="studentstats"
+            android:background="@color/load"
+            />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Test"
+            android:textSize="20sp"
+            android:onClick="Addtest"
+            android:textStyle="bold"
+            android:textColor="@color/header"
+            android:background="@color/load"
+            />
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modify Tests"
+            android:textSize="20sp"
+            android:onClick="Modifytests"
+            android:textStyle="bold"
+            android:textColor="@color/header"
+            android:background="@color/load"
+            />
+    </androidx.cardview.widget.CardView>
 
 
 
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
 

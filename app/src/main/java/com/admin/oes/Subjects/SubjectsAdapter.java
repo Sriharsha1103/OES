@@ -1,8 +1,7 @@
-package com.admin.oes;
+package com.admin.oes.Subjects;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,54 +10,49 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.admin.oes.R;
+import com.admin.oes.Topics.Topics;
+
 import java.util.List;
 
-public class StudentsDataAdapter extends RecyclerView.Adapter<StudentsDataAdapter.ViewHolder> {
-    private List<StudentsDataMOdel> listData;
+public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.ViewHolder> {
+    private List<SubjectsModel> listData;
     Context context;
-
-    public void setlist(List<StudentsDataMOdel> listData) {
+    public void setlist(List<SubjectsModel> listData) {
         this.listData = listData;
     }
-
-    StudentsDataAdapter(Context context) {
+    SubjectsAdapter(Context context) {
         this.context = context;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.studentsdata,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.subjects,parent,false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final StudentsDataMOdel ld=listData.get(position);
-        holder.txtid.setText(ld.getName());
+        final SubjectsModel ld=listData.get(position);
+                holder.txtid.setText(ld.getKey());
 //        holder.txtname.setText(ld.getTest());
-        Log.i("name1234",ld.getName());
         holder.txtid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, StudentsStatistics.class);
-                intent.putExtra("Student_uid",ld.getUid());
-                intent.putExtra("Student_name" , ld.getName());
+                Intent intent = new Intent(context, Topics.class);
+                intent.putExtra("subject_name" , ld.getKey());
                 v.getContext().startActivity(intent);
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return listData.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtid;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtid=itemView.findViewById(R.id.id_student_name);
+            txtid=itemView.findViewById(R.id.id_subject_name);
         }
     }
 }

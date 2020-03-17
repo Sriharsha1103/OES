@@ -6,9 +6,11 @@
     android:background="@color/background"
     android:scrollbars="vertical"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/header"
         android:orientation="vertical">
 
         <Button
@@ -16,12 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
-            android:textColor="@color/header"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@drawable/btn_rounded_accent"
             android:onClick="Quit"
-            android:text="Quit" />
+            android:background="@drawable/btn_rounded_accent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Quit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.admin.oes.Teacher_access.AddingTest">
+    <com.google.android.material.textfield.TextInputLayout
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:weightSum="4"
+        android:background="@color/load"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/header"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/id_add_test_test_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="Test Name"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:textColorHint="@color/textColor"
+            android:textColor="@color/textColor"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="0dp"
+            android:text="Type of test:"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/id_add_test_events_type"
+            android:text="Events"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/id_add_test_Practice_tests_type"
+            android:text="Practice Tests"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_add_test_no_of_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:layout_weight="5"
+                android:textColorHint="@color/textColor"
+                android:hint="Number of Questions"
+                android:textColor="@color/header"
+                />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_add_test_max_marks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:layout_weight="5"
+                android:hint="Max Marks"
+                android:textColor="@color/header"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Equal Weightage"/>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/id_equal_weightage_yes"
+                android:text="Yes"/>
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/id_equal_weightage_no"
+                android:text="No"/>
+        </LinearLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:onClick="TestDone"
+        android:background="@drawable/btn_rounded_accent"
+        android:layout_gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Questions:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_add_test_add_questiond_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="AddQuestion"
+            />
+    </LinearLayout>
+
+</LinearLayout>

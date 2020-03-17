@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/header"
-    tools:context=".Topics">
+    tools:context=".Topics.Topics">
     <Button
         android:layout_width="match_parent"
         android:layout_height="89dp"
         android:text="Topic name"
         android:onClick="Topic_name"
         android:layout_marginTop="10dp"
-        android:textColor="@color/header"
+        android:textColor="@color/textColor"
         android:padding="10dp"
         android:textStyle="bold"
-        android:background="@color/load"
+        android:background="@color/header"
         android:id="@+id/id_topic_name"
         android:textSize="24sp"/>
 

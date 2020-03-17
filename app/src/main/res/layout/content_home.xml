@@ -29,14 +29,13 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/yellow"
         android:orientation="horizontal">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:padding="10sp"
-            android:textColorHint="@color/textColor"
+            android:textColor="@color/textColor"
             android:textStyle="bold"
             android:hint="Test Name:"/>
 
@@ -44,9 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:textColorHint="@color/textColor"
+            android:textColor="@color/textColor"
             android:textSize="20sp"
-            android:textColor="@color/yellow"
             android:textStyle="bold"
             android:id="@+id/id_test"/>
 
@@ -62,11 +60,11 @@
             android:layout_height="400dp" >
 
         </com.github.mikephil.charting.charts.PieChart>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_no_test_taken"
-        android:text="No Exam Taken"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/id_no_test_taken"-->
+<!--        android:text="No Exam Taken"/>-->
 
 
 </LinearLayout>

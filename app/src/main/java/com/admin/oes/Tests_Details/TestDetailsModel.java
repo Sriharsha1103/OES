@@ -1,4 +1,4 @@
-package com.admin.oes;
+package com.admin.oes.Tests_Details;
 
 public class TestDetailsModel {
     String Ques,cans,gans;

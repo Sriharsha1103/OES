@@ -66,7 +66,6 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
         linearLayout = itemView.findViewById(R.id.linearlayout_events);
         txtid=(TextView)itemView.findViewById(R.id.one);
-        txtname=(TextView)itemView.findViewById(R.id.two);
         cardView = itemView.findViewById(R.id.card_view);
 
 

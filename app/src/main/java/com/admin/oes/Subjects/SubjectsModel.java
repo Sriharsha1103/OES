@@ -1,4 +1,4 @@
-package com.admin.oes;
+package com.admin.oes.Subjects;
 
 public class SubjectsModel {
     String key;

@@ -279,8 +279,8 @@ public class PracticeTests extends AppCompatActivity {
                     databaseReference.child("Answer").child(String.valueOf(j)).setValue(dbans.get(j));*/
 
                 Toast.makeText(PracticeTests.this, "Submitted..", Toast.LENGTH_SHORT).show();
-                finish();
                 dialog.dismiss();
+                finish();
             }
         });
 

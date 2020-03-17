@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Please wait...", Toast.LENGTH_SHORT).show();
                     lyt_progress.setVisibility(View.VISIBLE);
                     lyt_progress.setAlpha(1.0f);
-                    relativeLayout.setVisibility(View.GONE);
+                    relativeLayout.setVisibility(View.INVISIBLE);
                     new Firebaseretrive().execute();
                 } else {
                     firebaseAuth.removeAuthStateListener(authStateListener);

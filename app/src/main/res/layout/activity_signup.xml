@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/signup_layout"
+    android:scrollbars="vertical"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
@@ -11,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:background="@color/background"
+        android:background="@color/header"
         android:orientation="vertical">
 
 
@@ -37,14 +38,15 @@
                     <com.google.android.material.textfield.TextInputLayout
 
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Full Name"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColorHint="@color/textColor"
+                            android:textColor="@color/textColor"
                             android:id="@+id/fullname_signup"
                             android:inputType="text"
                             android:maxLines="1"
@@ -55,14 +57,15 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Username"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColorHint="@color/textColor"
+                            android:textColor="@color/textColor"
                             android:inputType="text"
                             android:id="@+id/username_signup"
                             android:maxLines="1"
@@ -72,14 +75,14 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Roll No:"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/textColor"
                             android:inputType="text"
                             android:id="@+id/rollno_signup"
                             android:maxLines="1"
@@ -89,14 +92,14 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone No"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/textColor"
                             android:inputType="number"
                             android:id="@+id/phoneno_signup"
                             android:maxLines="1"
@@ -106,14 +109,14 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Email"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/textColor"
                             android:inputType="textEmailAddress"
                             android:id="@+id/email_signup"
                             android:maxLines="1"
@@ -123,15 +126,16 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/header"
+                        android:textColorHint="@color/textColor"
                         android:layout_height="wrap_content">
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/textColor"
                             android:inputType="textPassword"
+                            android:textColorHint="@color/textColor"
                             android:id="@+id/password_signup"
                             android:maxLines="1"
                             android:singleLine="true" />

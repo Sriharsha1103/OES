@@ -21,6 +21,7 @@
             android:gravity="center"
             android:text="Logging in..."
             android:textStyle="bold"
+            android:background="@color/header"
             android:id="@+id/login_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/textColor" />
@@ -28,6 +29,9 @@
                 <pl.droidsonroids.gif.GifImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
+                    android:outlineAmbientShadowColor="@color/header"
+                    android:outlineSpotShadowColor="@color/header"
+                    android:background="@color/header"
                     android:src="@drawable/gif" />
 
     </LinearLayout>

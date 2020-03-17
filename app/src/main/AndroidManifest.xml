@@ -13,16 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentsStatistics" />
-        <activity android:name=".StudentsData" />
-        <activity android:name=".Statistics" />
-        <activity android:name=".TestDetails" />
+        <activity android:name=".Teacher_access.QuestionDetails"></activity>
+        <activity android:name=".Teacher_access.QuestionsInTest" />
+        <activity android:name=".Teacher_access.ModifyTests" />
+        <activity android:name=".Teacher_access.AddTestQuestions" />
+        <activity android:name=".Teacher_access.AddingTest" />
+        <activity android:name=".Students_Statistics.StudentsStatistics" />
+        <activity android:name=".Students_Statistics.StudentsData" />
+        <activity android:name=".Statistics.Statistics" />
+        <activity android:name=".Tests_Details.TestDetails" />
         <activity android:name=".Home" />
         <activity android:name=".PracticeTests" />
-        <activity android:name=".Topics" />
-        <activity android:name=".Subjects" />
+        <activity android:name=".Topics.Topics" />
+        <activity android:name=".Subjects.Subjects" />
         <activity
-            android:name=".Teacher"
+            android:name=".Teacher_access.Teacher"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Test"
@@ -40,7 +45,6 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Auth.Signup" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

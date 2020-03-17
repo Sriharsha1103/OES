@@ -80,10 +80,8 @@ public class Test extends AppCompatActivity {
 
         Intent intent = getIntent();
         keyi = intent.getStringExtra("testid");
+        Log.i("name123",keyi);
         setTitle(keyi);
-
-
-
         Ar = findViewById(R.id.a);
         Br = findViewById(R.id.b);
         Cr = findViewById(R.id.c);
@@ -268,7 +266,7 @@ public class Test extends AppCompatActivity {
                 databaseReference.child("Time").setValue(s);
                 databaseReference.child("Teacher").setValue("Temp.....");
                 databaseReference.child("ID").setValue("Temp.....");
-                Log.d("Subbmitted", "kduhasuyfj");
+                Log.d("Subbmitted", "");
                 myList = new ArrayList<>();
                 QuestionsModel model = new QuestionsModel();
                 for (int j = 0; j < dbans.size(); j++) {
@@ -284,6 +282,7 @@ public class Test extends AppCompatActivity {
                 Log.d("correct", String.valueOf(corect));
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("LastTakenTest",keyi);
+                Log.i("testname",keyi);
                 editor.putString("lastScore",String.valueOf(corect));
                 editor.putString("lastwrong",String.valueOf(Wrong));
                 editor.putString("UNAnswered",String.valueOf(MAX_STEP-corect-Wrong));

@@ -4,7 +4,7 @@
     <color name="textColor" tools:ignore="MissingDefaultResource">#FFFFFF</color>
     <color name="pink">#FCD6D3</color>
     <color name="background">#F5F5F4</color>
-    <color name="load">#53D3D1</color>
+    <color name="load">#b6ffff</color>
     <color name="yellow">#FF9800</color>
     <color name="colorPrimaryDark">#E6000000</color>
     <color name="colorPrimary">#E6FFFFFF</color>//Textinput outline colour

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:background="@color/background"
     android:layout_height="wrap_content"
     >
@@ -11,8 +12,10 @@
         android:hint="Question: "
         android:textColorHint="@color/header"
         android:textSize="20sp"
-        android:textColor="@color/header"
-        android:background="@color/load"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@color/background"
         android:id="@+id/id_user_test_question"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="@color/header"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp"
         android:id="@+id/id_user_test_correct_ans"/>
     </LinearLayout>
@@ -53,7 +56,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="15sp"
-            android:textColor="@color/header"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/id_user_test_given_ans"/>
     </LinearLayout>
 

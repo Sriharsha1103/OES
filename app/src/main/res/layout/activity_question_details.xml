@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.admin.oes.Teacher_access.QuestionDetails">
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/header"
+            android:paddingLeft="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/background"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:gravity="top"
+                    android:layout_weight="5"
+                    android:hint="Question"
+                    android:inputType="textMultiLine"
+                    android:maxLines="12"
+                    android:scrollbars="vertical"
+                    android:textStyle="bold"
+                    android:minLines="7"
+                    android:id="@+id/question"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            </androidx.core.widget.NestedScrollView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:padding="@dimen/spacing_large"-->
+            <!--                android:background="@color/background"-->
+            <!--                android:textColorHint="@color/colorPrimaryDark">-->
+
+            <!--                <androidx.appcompat.widget.AppCompatEditText-->
+
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="70dp"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:gravity="top"-->
+            <!--                    android:hint="Description"-->
+            <!--                    android:inputType="textMultiLine"-->
+            <!--                    android:maxLines="12"-->
+            <!--                    android:minLines="7"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    android:id="@+id/description"-->
+            <!--                    android:textColor="@color/header"-->
+            <!--                    android:theme="@style/EditText.Yellow" />-->
+
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <!--            <View-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/spacing_middle" />-->
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 1"
+                    android:textStyle="bold"
+                    android:id="@+id/o1"
+                    android:textColor="@color/header"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 2"
+                    android:id="@+id/o2"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/background_dark"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 3"
+                    android:id="@+id/o3"
+                    android:textStyle="bold"
+                    android:textColor="@color/header"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Option 4"
+                    android:id="@+id/o4"
+                    android:textStyle="bold"
+                    android:textColor="@color/header"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Correct Answer"
+                    android:id="@+id/ans"
+                    android:textStyle="bold"
+                    android:textColor="@color/header"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+            <Button
+                android:id="@+id/button_done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:background="@drawable/btn_rounded_accent"
+                android:text="Done!"
+                android:onClick="Done"
+                android:textStyle="bold"
+                android:textColor="@color/header"
+                tools:ignore="OnClick" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

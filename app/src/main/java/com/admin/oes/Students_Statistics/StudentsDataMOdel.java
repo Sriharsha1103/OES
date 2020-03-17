@@ -1,4 +1,4 @@
-package com.admin.oes;
+package com.admin.oes.Students_Statistics;
 
 public class StudentsDataMOdel {
     String name,uid;

@@ -1,4 +1,4 @@
-package com.admin.oes;
+package com.admin.oes.Tests_Details;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.admin.oes.R;
 
 import java.util.List;
 
