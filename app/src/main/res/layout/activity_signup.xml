@@ -38,15 +38,15 @@
                     <com.google.android.material.textfield.TextInputLayout
 
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Full Name"
-                            android:textColorHint="@color/textColor"
-                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/background"
+                            android:textColor="@color/background"
                             android:id="@+id/fullname_signup"
                             android:inputType="text"
                             android:maxLines="1"
@@ -57,15 +57,15 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Username"
-                            android:textColorHint="@color/textColor"
-                            android:textColor="@color/textColor"
+                            android:textColorHint="@color/background"
+                            android:textColor="@color/background"
                             android:inputType="text"
                             android:id="@+id/username_signup"
                             android:maxLines="1"
@@ -75,7 +75,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
@@ -92,14 +92,14 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone No"
-                            android:textColor="@color/textColor"
+                            android:textColor="@color/background"
                             android:inputType="number"
                             android:id="@+id/phoneno_signup"
                             android:maxLines="1"
@@ -109,14 +109,14 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Email"
-                            android:textColor="@color/textColor"
+                            android:textColor="@color/background"
                             android:inputType="textEmailAddress"
                             android:id="@+id/email_signup"
                             android:maxLines="1"
@@ -126,16 +126,16 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:textColorHint="@color/textColor"
+                        android:textColorHint="@color/background"
                         android:layout_height="wrap_content">
 
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
-                            android:textColor="@color/textColor"
+                            android:textColor="@color/background"
                             android:inputType="textPassword"
-                            android:textColorHint="@color/textColor"
+                            android:textColorHint="@color/background"
                             android:id="@+id/password_signup"
                             android:maxLines="1"
                             android:singleLine="true" />

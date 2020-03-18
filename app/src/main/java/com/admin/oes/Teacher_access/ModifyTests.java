@@ -33,11 +33,11 @@ public class ModifyTests extends AppCompatActivity {
         adapter = new ModifyTestsAdapter(ModifyTests.this);
         modifyTestsAdapter=new ModifyTestsAdapter(ModifyTests.this);
         rv=(RecyclerView)findViewById(R.id.id_events_tests_recycler_view);
-        practice_recycler_view=findViewById(R.id.id_practice_tests_recycler_view);
+       // practice_recycler_view=findViewById(R.id.id_practice_tests_recycler_view);
         rv.setHasFixedSize(true);
-        practice_recycler_view.setHasFixedSize(true);
+       // practice_recycler_view.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        practice_recycler_view.setLayoutManager(new LinearLayoutManager(this));
+      //  practice_recycler_view.setLayoutManager(new LinearLayoutManager(this));
         listData=new ArrayList<>();
         list=new ArrayList<>();
 

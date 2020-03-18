@@ -2,62 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/header"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <include layout="@layout/toolbar" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Statistics of Students"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/header"
+            android:textColor="@color/background"
+            android:background="@color/lytblue"
+
             android:onClick="studentstats"
-            android:background="@color/load"
             />
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Test"
             android:textSize="20sp"
             android:onClick="Addtest"
+            android:layout_marginTop="20dp"
+
             android:textStyle="bold"
-            android:textColor="@color/header"
-            android:background="@color/load"
+            android:textColor="@color/background"
+            android:background="@color/lytblue"
             />
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Modify Tests"
             android:textSize="20sp"
+            android:layout_marginTop="20dp"
+
             android:onClick="Modifytests"
             android:textStyle="bold"
-            android:textColor="@color/header"
-            android:background="@color/load"
+            android:textColor="@color/background"
+            android:background="@color/lytblue"
             />
-    </androidx.cardview.widget.CardView>
 
 
 

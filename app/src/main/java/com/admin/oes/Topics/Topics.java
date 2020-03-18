@@ -59,8 +59,6 @@ public class Topics extends AppCompatActivity {
 
                 adapter.setlist(listData);
                 rv.setAdapter(adapter);
-                TextView usercount = findViewById(R.id.id_topic_name);
-                usercount.setText(String.valueOf(dataSnapshot.getChildrenCount()));
                 sub_name=dataSnapshot.getKey();
 //               abc.setOnClickListener(new View.OnClickListener() {
 //                   @Override

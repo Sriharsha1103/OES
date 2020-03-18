@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:padding="8dp"
+        android:background="@color/lytblue"
         android:scrollbars="vertical">
 
         <LinearLayout
@@ -20,59 +22,7 @@
             android:paddingLeft="@dimen/spacing_large"
             android:paddingRight="@dimen/spacing_large">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/spacing_middle" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:background="@color/background"
-                    android:textColorHint="@color/colorPrimaryDark">
-
-
-                    <androidx.appcompat.widget.AppCompatEditText
-
-                        android:id="@+id/ques_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Ques NO."
-                        android:textColor="@color/load"
-                        android:textStyle="bold"
-                        android:theme="@style/EditText.Yellow" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/spacing_middle" />-->
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:background="@color/background"
-                    android:textColorHint="@color/colorPrimaryDark">
-
-                    <androidx.appcompat.widget.AppCompatEditText
-
-                        android:id="@+id/marks"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:hint="Marks"
-                        android:textColor="@color/header"
-                        android:textStyle="bold"
-                        android:theme="@style/EditText.Yellow" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -83,14 +33,15 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:padding="5dp"
-                android:background="@color/background"
+                android:layout_marginTop="10dp"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText
 
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@color/background"
+                    android:background="@color/load"
                     android:textColorHint="@color/colorPrimaryDark"
                     android:gravity="top"
                     android:hint="Question"
@@ -140,7 +91,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -163,7 +114,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -186,7 +137,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -209,7 +160,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -232,7 +183,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background"
+                android:background="@color/load"
                 android:textColorHint="@color/colorPrimaryDark">
 
                 <androidx.appcompat.widget.AppCompatEditText

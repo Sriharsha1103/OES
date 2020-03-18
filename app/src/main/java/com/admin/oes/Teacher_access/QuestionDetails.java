@@ -32,10 +32,10 @@ public class QuestionDetails extends AppCompatActivity {
         ques = i.getStringExtra("ques");
         question_name = i.getStringExtra("question_Name");
         Log.i("pos1", "" + position);
-        marks = findViewById(R.id.marks);
+      //  marks = findViewById(R.id.marks);
 //        marks.setText("" + weightage);
         question = findViewById(R.id.question);
-        ques_no = findViewById(R.id.ques_no);
+     //   ques_no = findViewById(R.id.ques_no);
         o1 = findViewById(R.id.o1);
         o2 = findViewById(R.id.o2);
         o3 = findViewById(R.id.o3);

@@ -30,15 +30,15 @@ int i=1;
         no_of_questions=i.getStringExtra("no of questions");
         max_marks=i.getStringExtra("max marks");
         weightage=i.getStringExtra("weightage");
-        marks=findViewById(R.id.marks);
-        marks.setText(""+weightage);
+    //    marks=findViewById(R.id.marks);
+//        marks.setText(""+weightage);
         question=findViewById(R.id.question);
-        ques_no=findViewById(R.id.ques_no);
+    //    ques_no=findViewById(R.id.ques_no);
         o1=findViewById(R.id.o1);
         o2=findViewById(R.id.o2);
         o3=findViewById(R.id.o3);
         o4=findViewById(R.id.o4);
-        ques_no.setText("Ques NO: "+position);
+        //ques_no.setText("Ques NO: "+position);
         correctAnswer=findViewById(R.id.ans);
         }
 
@@ -69,14 +69,8 @@ int i=1;
                     databaseReference2.child("c").setValue(o3.getText().toString());
                     databaseReference2.child("d").setValue(o4.getText().toString());
                     databaseReference2.child("ans").setValue(correctAnswer.getText().toString());
-                    databaseReference2.child("marks").setValue(marks.getText().toString());
-                    question.setHint("Enter Question");
-                    i++;
-                    o1.setHint("Enter Option 1");
-                    o2.setHint("Enter Option 2");
-                    o3.setHint("Enter Option 3");
-                    o4.setHint("Enter Option 4");
-                    correctAnswer.setHint("Enter Correct Answer");
+                   // databaseReference2.child("marks").setValue(marks.getText().toString());
+
                     Toast.makeText(AddTestQuestions.this, "Uploaded successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }

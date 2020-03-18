@@ -5,21 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/header"
     tools:context="com.admin.oes.Statistics.Statistics">
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:outlineAmbientShadowColor="@color/load"
+        android:outlineSpotShadowColor="@color/load"
+        android:layout_height="wrap_content"
         android:layout_weight="5"/>
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="5">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/id_user_test_details_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:backgroundTint="@color/header"
         android:background="@color/background" />
+</androidx.core.widget.NestedScrollView>
 
 
 </LinearLayout>

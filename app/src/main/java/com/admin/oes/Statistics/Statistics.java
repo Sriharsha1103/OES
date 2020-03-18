@@ -95,7 +95,6 @@ public class Statistics extends AppCompatActivity {
         leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
         leftAxis.setSpaceTop(15f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-
         YAxis rightAxis = barChart.getAxisRight();
         rightAxis.setDrawGridLines(false);
         rightAxis.setLabelCount(8, false);
@@ -160,7 +159,7 @@ public class Statistics extends AppCompatActivity {
                 String parent = dataSnapshot.getKey();
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     String v = childDataSnapshot.child("Correctans").getValue().toString();
-                    values.add(new BarEntry(i, Float.parseFloat(v)));
+                    values.add(new BarEntry(i, Float.parseFloat(v),childDataSnapshot.getKey()));
                     i++;
                 }
 

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/header"
     android:layout_height="wrap_content">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:text="Add Question"
         android:textSize="24sp"
+        android:background="@color/load"
         android:textColor="@color/colorPrimaryDark"
         android:id="@+id/id_add_question"
         android:drawableLeft="@drawable/ic_edit"/>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/header"
     tools:context="com.admin.oes.Students_Statistics.StudentsStatistics">
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +13,7 @@
         android:id="@+id/id_key"/>
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
-        android:background="@color/background"
+        android:background="@color/header"
         android:layout_width="match_parent"
         android:layout_height="288dp" />
 
@@ -20,7 +21,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
+        android:background="@color/header"
         android:id="@+id/id_user_test_details_recycler_view"/>
 
 

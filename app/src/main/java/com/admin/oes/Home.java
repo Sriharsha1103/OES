@@ -65,7 +65,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     PieDataSet pieDataSet;
     List<PieEntry> entries;
     PieData pieData;
-    TextView test,notesttaken;
+    TextView test;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +76,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         pieChart = (PieChart) findViewById(R.id.chart1);
+
         test = findViewById(R.id.id_test);
-        notesttaken=findViewById(R.id.id_no_test_taken);
+
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
 
@@ -147,7 +149,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         if (test_name != null) {
             entries = new ArrayList<>();
-            notesttaken.setVisibility(View.INVISIBLE);
             test.setText(test_name);
             if (Integer.parseInt(correct) != 0) {
                 entries.add(new PieEntry(Float.parseFloat(correct), "Correct"));
@@ -180,7 +181,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
                     }
                     else {
-                        notesttaken.setVisibility(View.INVISIBLE);
                         entries = new ArrayList<>();
                         test.setText(test_name);
                         entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
@@ -247,8 +247,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(new Intent(Home.this, Teacher.class));
             } else if (id == R.id.nav_about) {
                 Toast.makeText(instance, "About", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_help) {
-                Toast.makeText(instance, "Help", Toast.LENGTH_SHORT).show();
             }
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);

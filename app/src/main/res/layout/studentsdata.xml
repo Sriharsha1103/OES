@@ -7,8 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:background="@color/yellow"
-        android:layout_marginTop="25dp"
+        android:background="@color/header"
+        android:layout_marginTop="20dp"
+        android:hint="name"
+        android:textColorHint="@color/background"
+        android:textColor="@color/background"
         android:id="@+id/id_student_name"/>
 
 </LinearLayout>

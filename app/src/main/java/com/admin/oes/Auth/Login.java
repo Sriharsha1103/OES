@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.internal.InternalTokenProvider;
 
 public class Login extends AppCompatActivity {
 
@@ -209,7 +211,11 @@ public class Login extends AppCompatActivity {
                         }
 
                         public void onFinish() {
-                            startActivity(new Intent(Login.this, Home.class));
+                            Intent i=new Intent(Login.this, Home.class);
+                            i.putExtra("username",Name);
+                            Log.i("user123",Name);
+                            startActivity(i);
+
                             finish();
                         }
                     }.start();

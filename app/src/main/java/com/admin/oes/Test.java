@@ -37,7 +37,7 @@ public class Test extends AppCompatActivity {
 
     public int counter;
     Button button;
-    TextView textView;
+    TextView textView,question_number;
     private ProgressBar progressBar;
     private TextView quest_tv, marks;
     int MAX_STEP, selectedId, position = 0;
@@ -49,6 +49,7 @@ public class Test extends AppCompatActivity {
     ArrayList<String> D = new ArrayList<String>();
     ArrayList<String> ans = new ArrayList<String>();
     ArrayList<String> key = new ArrayList<String>();
+    ArrayList<Integer> q_number = new ArrayList<Integer>();
     ArrayList<String> marksa = new ArrayList<String>();
     ArrayList<String> dbans = new ArrayList<String>();
     ArrayList<String> dques = new ArrayList<String>();
@@ -67,6 +68,7 @@ public class Test extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        question_number=findViewById(R.id.id_question_number);
 //        Toolbar toolbar = findViewById(R.id.toolbartest);
 //        setSupportActionBar(toolbar);
         Window window = this.getWindow();
@@ -100,9 +102,10 @@ public class Test extends AppCompatActivity {
                     dcoreans.add("");
                     dques.add("");
                 }
-
+                int i=1;
+                q_number.add(0);
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-
+                    q_number.add(i);
                     que.add(childDataSnapshot.child("q").getValue().toString());
                     A.add(childDataSnapshot.child("a").getValue().toString());
                     B.add(childDataSnapshot.child("b").getValue().toString());
@@ -111,6 +114,7 @@ public class Test extends AppCompatActivity {
                     ans.add(childDataSnapshot.child("ans").getValue().toString());
                   //  marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
+                    i++;
                 }
                 steppedprogress();
                 starttest(0);
@@ -128,7 +132,7 @@ public class Test extends AppCompatActivity {
 
         if (pos <= MAX_STEP - 1) {
             quest_tv.setText(que.get(pos));
-//            marks.setText("Marks: " + marksa.get(pos));
+           // question_number.setText(q_number.get(pos+1));
             Ar.setText(A.get(pos));
             Br.setText(B.get(pos));
             Cr.setText(C.get(pos));

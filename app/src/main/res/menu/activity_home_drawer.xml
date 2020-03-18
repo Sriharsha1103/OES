@@ -32,23 +32,20 @@
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="About" />
-            <item
-                android:id="@+id/nav_help"
-                android:icon="@drawable/ic_help_black_24dp"
-                android:title="Help" />
         </menu>
     </item>
 
     <item android:title="Account">
         <menu>
             <item
-                android:id="@+id/nav_signout"
-                android:icon="@drawable/ic_exit_to_app_black_24dp"
-                android:title="Sign Out" />
-            <item
                 android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_person_black_24dp"
                 android:title="Profile" />
+            <item
+                android:id="@+id/nav_signout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Sign Out" />
+
 
         </menu>
     </item>

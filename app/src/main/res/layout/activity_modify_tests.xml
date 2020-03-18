@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/header"
     tools:context="com.admin.oes.Teacher_access.ModifyTests">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Events:"
+    android:textColor="@color/background"
     android:textSize="30dp"
     />
     <androidx.recyclerview.widget.RecyclerView
@@ -17,15 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:id="@+id/id_events_tests_recycler_view"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Practice Tests:"
-        android:textSize="30dp"
-        />
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:id="@+id/id_practice_tests_recycler_view"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Practice Tests:"-->
+<!--        android:textSize="30dp"-->
+<!--        />-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="5"-->
+<!--        android:id="@+id/id_practice_tests_recycler_view"/>-->
 </LinearLayout>

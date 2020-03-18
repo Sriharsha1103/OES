@@ -50,10 +50,6 @@ public class Subjects extends AppCompatActivity {
                 adapter.setlist(listData);
                 rv.setAdapter(adapter);
 
-                // get total available quest
-                int size = (int) dataSnapshot.getChildrenCount();
-               TextView usercount = findViewById(R.id.id_size);
-                usercount.setText(size+"");
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background"
+    android:background="@color/header"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Event.Events">
@@ -11,8 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/header"
-    android:text="Events"
-    android:textColor="@color/textColor"
+    android:text="Events:"
+    android:textColor="@color/background"
     android:textSize="35sp"
     android:layout_gravity="center"
     />

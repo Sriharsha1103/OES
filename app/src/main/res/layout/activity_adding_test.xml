@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/header"
     tools:context="com.admin.oes.Teacher_access.AddingTest">
     <com.google.android.material.textfield.TextInputLayout
 
@@ -24,10 +24,9 @@
             android:id="@+id/id_add_test_test_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
             android:layout_marginTop="10dp"
             android:hint="Test Name"
-            android:singleLine="true"
+            android:background="@color/lytblue"
             android:textSize="20sp"
             android:textColorHint="@color/textColor"
             android:textColor="@color/textColor"
@@ -36,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@color/load"
             android:padding="8dp">
         <TextView
             android:layout_width="wrap_content"
@@ -111,7 +111,8 @@
         android:layout_height="wrap_content"
         android:text="Done"
         android:onClick="TestDone"
-        android:background="@drawable/btn_rounded_accent"
+        android:layout_marginTop="15dp"
+        android:background="@color/load"
         android:layout_gravity="center"
         />
 
@@ -125,14 +126,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Questions:"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/background"
             android:textSize="20sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/id_add_test_add_questiond_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="AddQuestion"
             />
     </LinearLayout>
 

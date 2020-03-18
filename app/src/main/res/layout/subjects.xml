@@ -2,20 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/header"
+    android:background="@color/lytblue"
+    android:padding="8dp"
+    android:layout_marginTop="10dp"
     android:layout_height="wrap_content">
 
     <Button
 
         android:id="@+id/id_subject_name"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/header"
-        android:layout_marginTop="1dp"
         android:textStyle="bold"
+        android:background="@color/lytblue"
+        android:padding="8dp"
         android:text="subject_name"
-        android:textColor="@color/textColor"
+        android:textColor="@color/background"
         android:textSize="24sp" />
 
 

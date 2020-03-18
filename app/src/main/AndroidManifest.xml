@@ -13,36 +13,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Teacher_access.QuestionDetails"></activity>
-        <activity android:name=".Teacher_access.QuestionsInTest" />
-        <activity android:name=".Teacher_access.ModifyTests" />
-        <activity android:name=".Teacher_access.AddTestQuestions" />
-        <activity android:name=".Teacher_access.AddingTest" />
-        <activity android:name=".Students_Statistics.StudentsStatistics" />
-        <activity android:name=".Students_Statistics.StudentsData" />
-        <activity android:name=".Statistics.Statistics" />
-        <activity android:name=".Tests_Details.TestDetails" />
-        <activity android:name=".Home" />
-        <activity android:name=".PracticeTests" />
-        <activity android:name=".Topics.Topics" />
-        <activity android:name=".Subjects.Subjects" />
+        <activity android:name=".Teacher_access.QuestionDetails"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Teacher_access.QuestionsInTest"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Teacher_access.ModifyTests"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Teacher_access.AddTestQuestions"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Teacher_access.AddingTest"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Students_Statistics.StudentsStatistics"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Students_Statistics.StudentsData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Statistics.Statistics"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Tests_Details.TestDetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Home"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PracticeTests"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Topics.Topics"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Subjects.Subjects"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Teacher_access.Teacher"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Test"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Auth.Login">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:screenOrientation="portrait"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile" />
+        <activity android:name=".Profile"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Event.Events"
             android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Auth.Signup" />
     </application>

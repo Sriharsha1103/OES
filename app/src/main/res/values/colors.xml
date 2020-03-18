@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="header">#002447</color>
-    <color name="textColor" tools:ignore="MissingDefaultResource">#FFFFFF</color>
+    <color name="textColor" tools:ignore="MissingDefaultResource">#0C0C0C</color>
     <color name="pink">#FCD6D3</color>
-    <color name="background">#F5F5F4</color>
+    <color name="background">#F5F2F5</color>
     <color name="load">#b6ffff</color>
     <color name="yellow">#FF9800</color>
     <color name="colorPrimaryDark">#E6000000</color>
     <color name="colorPrimary">#E6FFFFFF</color>//Textinput outline colour
     <color name="black">#E6000000</color>
+    <color name="lytblue">#6f79a8</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
