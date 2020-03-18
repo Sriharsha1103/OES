@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -53,7 +54,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     NavigationView navView;
 
     DrawerLayout drawerLayout;
-    TextView nav_namec, nav_emailc, nav_rollno;
+    TextView nav_namec, nav_emailc, nav_rollno, notest;
     SharedPreferences sharedPreferences;
     Toolbar toolbar;
     static Home instance;
@@ -72,9 +73,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Crack IT");
         instance = this;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        notest = findViewById(R.id.id_no_test_taken);
+        notest.setVisibility(View.GONE);
+
         pieChart = (PieChart) findViewById(R.id.chart1);
 
         test = findViewById(R.id.id_test);
@@ -148,6 +155,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Log.d("correct", String.valueOf(correct));
 
         if (test_name != null) {
+            Log.d("Checkinif" , test_name);
             entries = new ArrayList<>();
             test.setText(test_name);
             if (Integer.parseInt(correct) != 0) {
@@ -162,30 +170,60 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     }
 
          } else {
+            Log.d("Checkinelse" , "HEre");
+            Log.d("Checkinelse" , "HEre2" + firebaseAuth.getUid());
+
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-            databaseReference.child("Users").child(firebaseAuth.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
+
+            databaseReference.child("Users").child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String v = "", key = "", w = "";
-                    for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                        if (childDataSnapshot.getKey().equals(test_name)) {
-                            v = childDataSnapshot.child("Correctans").getValue().toString();
-                            w = childDataSnapshot.child("wrongans").getValue().toString();
-                            key = childDataSnapshot.getKey();
-                            Log.i("Test-149", v);
-                        }
+                    if(dataSnapshot.hasChild("Exams")){
+                        String v = "", key = "", w = "";
 
-                    }
-                    if (v.equals("") || w.equals("")) {
-                        Log.i("Test", "No Data to Display");
+                        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
+                        databaseReference2.child("Users").child(firebaseAuth.getUid()).child("Exams").addChildEventListener(new ValueEventListener(){
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
 
+                                    Log.d("Checkinelse" , "HEre2");
+
+
+                                    if (childDataSnapshot.getKey().equals(test_name)) {
+                                        v = childDataSnapshot.child("Correctans").getValue().toString();
+                                        w = childDataSnapshot.child("wrongans").getValue().toString();
+                                        key = childDataSnapshot.getKey();
+                                        Log.i("Test-149", v);
+                                    }
+
+//                        else {
+//                            pieChart.setVisibility(View.GONE);
+//                            notest.setVisibility(View.VISIBLE);
+//                        }
+
+                                }
+                                if (v.equals("") || w.equals("")) {
+                                    Log.i("Test", "No Data to Display");
+
+                                }
+                                else {
+                                    entries = new ArrayList<>();
+                                    test.setText(test_name);
+                                    entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
+                                    entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
+                                }
+                            }
+                        });
+
+
+
+                    } else
+                    {
+                        pieChart.setVisibility(View.GONE);
+                           notest.setVisibility(View.VISIBLE);
                     }
-                    else {
-                        entries = new ArrayList<>();
-                        test.setText(test_name);
-                        entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
-                        entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
-                    }
+
 
                     }
 

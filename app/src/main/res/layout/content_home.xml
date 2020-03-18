@@ -61,11 +61,15 @@
             android:layout_height="400dp" >
 
         </com.github.mikephil.charting.charts.PieChart>
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/id_no_test_taken"-->
-<!--        android:text="No Exam Taken"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:id="@+id/id_no_test_taken"
+        android:text="No Exam Taken"/>
 
 
 </LinearLayout>

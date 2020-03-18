@@ -28,7 +28,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:textSize="30sp"
+                android:padding="10dp"
+                android:id="@+id/counttowntimer"
+                android:textSize="20sp"
                 android:text="00:00"/>
             <Button
                 android:id="@+id/id_quit"

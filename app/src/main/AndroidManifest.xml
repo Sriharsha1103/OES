@@ -16,7 +16,8 @@
         <activity android:name=".About"></activity>
         <activity
             android:name=".Teacher_access.QuestionDetails"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Teacher_access.QuestionsInTest"
             android:screenOrientation="portrait" />
@@ -43,7 +44,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Home"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".PracticeTests"
             android:screenOrientation="portrait" />
