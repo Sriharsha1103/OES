@@ -176,63 +176,38 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-            databaseReference.child("Users").child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Users").child(firebaseAuth.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-//                    if(dataSnapshot.hasChild("Exams")){
-//                        String v = "", key = "", w = "";
-//
-//                        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
-//                        databaseReference2.child("Users").child(firebaseAuth.getUid()).child("Exams").addChildEventListener(new ValueEventListener(){
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-//
-//                                    Log.d("Checkinelse" , "HEre2");
-//
-//
-//                                    if (childDataSnapshot.getKey().equals(test_name)) {
-//                                        v = childDataSnapshot.child("Correctans").getValue().toString();
-//                                        w = childDataSnapshot.child("wrongans").getValue().toString();
-//                                        key = childDataSnapshot.getKey();
-//                                        Log.i("Test-149", v);
-//                                    }
-//
-////                        else {
-////                            pieChart.setVisibility(View.GONE);
-////                            notest.setVisibility(View.VISIBLE);
-////                        }
-//
-//                                }
-//                                if (v.equals("") || w.equals("")) {
-//                                    Log.i("Test", "No Data to Display");
-//
-//                                }
-//                                else {
-//                                    entries = new ArrayList<>();
-//                                    test.setText(test_name);
-//                                    entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
-//                                    entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
-//                                }
-//                            }
-//                        });
-//
-//
-//
-//                    } else
-//                    {
-//                        pieChart.setVisibility(View.GONE);
-//                           notest.setVisibility(View.VISIBLE);
-//                    }
-
+                    String v = "", key = "", w = "";
+                    for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                        if (childDataSnapshot.getKey().equals(test_name)) {
+                            v = childDataSnapshot.child("Correctans").getValue().toString();
+                            w = childDataSnapshot.child("wrongans").getValue().toString();
+                            key = childDataSnapshot.getKey();
+                            Log.i("Test-149", v);
+                        }
 
                     }
-
-                    @Override
-                    public void onCancelled (DatabaseError databaseError){
+                    if (v.equals("") || w.equals("")) {
+                        Log.i("Test", "No Data to Display");
 
                     }
-                });
+                    else {
+                        entries = new ArrayList<>();
+                        test.setText(test_name);
+                        entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
+                        entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
+                    }
+
+                }
+
+                @Override
+                public void onCancelled (DatabaseError databaseError){
+
+                }
+            });
+
 
             }
         }

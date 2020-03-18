@@ -54,14 +54,6 @@ public class Upload extends AppCompatActivity {
                     String OPT_D = data2.getString("OPT D");
                     String CORRECT_ANS = data2.getString("CORRECT ANS");
                     String EXPLANATION = data2.getString("EXPLANATION");
-                    Log.d("JSON0" , key);
-                    Log.d("JSON1" , QUESTION);
-                    Log.d("JSON2" , OPT_A);
-                    Log.d("JSON3" , OPT_B);
-                    Log.d("JSON4" , OPT_C);
-                    Log.d("JSON5" , OPT_D);
-                    Log.d("JSON6" , CORRECT_ANS);
-                    Log.d("JSON7" , EXPLANATION);
 
 //To save data in Firebase Database
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Tests/" + key);
