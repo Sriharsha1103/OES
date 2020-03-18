@@ -52,4 +52,7 @@ dependencies {
     // Add the Firebase SDK for Crashlytics.
     implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+    implementation 'com.github.TutorialsAndroid:FilePicker:v7.0.19'
+
 }
