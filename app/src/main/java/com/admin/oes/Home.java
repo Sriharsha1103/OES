@@ -186,9 +186,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-
-
-
                                     Log.d("Checkinelse" , "HEre2");
 
 
