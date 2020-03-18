@@ -82,6 +82,7 @@ public class Test extends AppCompatActivity {
 //        getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         timer = findViewById(R.id.counttowntimer);
