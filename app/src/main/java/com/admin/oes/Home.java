@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -178,51 +179,51 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             databaseReference.child("Users").child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.hasChild("Exams")){
-                        String v = "", key = "", w = "";
-
-                        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
-                        databaseReference2.child("Users").child(firebaseAuth.getUid()).child("Exams").addChildEventListener(new ValueEventListener(){
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-
-                                    Log.d("Checkinelse" , "HEre2");
-
-
-                                    if (childDataSnapshot.getKey().equals(test_name)) {
-                                        v = childDataSnapshot.child("Correctans").getValue().toString();
-                                        w = childDataSnapshot.child("wrongans").getValue().toString();
-                                        key = childDataSnapshot.getKey();
-                                        Log.i("Test-149", v);
-                                    }
-
-//                        else {
-//                            pieChart.setVisibility(View.GONE);
-//                            notest.setVisibility(View.VISIBLE);
-//                        }
-
-                                }
-                                if (v.equals("") || w.equals("")) {
-                                    Log.i("Test", "No Data to Display");
-
-                                }
-                                else {
-                                    entries = new ArrayList<>();
-                                    test.setText(test_name);
-                                    entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
-                                    entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
-                                }
-                            }
-                        });
-
-
-
-                    } else
-                    {
-                        pieChart.setVisibility(View.GONE);
-                           notest.setVisibility(View.VISIBLE);
-                    }
+//                    if(dataSnapshot.hasChild("Exams")){
+//                        String v = "", key = "", w = "";
+//
+//                        DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference();
+//                        databaseReference2.child("Users").child(firebaseAuth.getUid()).child("Exams").addChildEventListener(new ValueEventListener(){
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+//
+//                                    Log.d("Checkinelse" , "HEre2");
+//
+//
+//                                    if (childDataSnapshot.getKey().equals(test_name)) {
+//                                        v = childDataSnapshot.child("Correctans").getValue().toString();
+//                                        w = childDataSnapshot.child("wrongans").getValue().toString();
+//                                        key = childDataSnapshot.getKey();
+//                                        Log.i("Test-149", v);
+//                                    }
+//
+////                        else {
+////                            pieChart.setVisibility(View.GONE);
+////                            notest.setVisibility(View.VISIBLE);
+////                        }
+//
+//                                }
+//                                if (v.equals("") || w.equals("")) {
+//                                    Log.i("Test", "No Data to Display");
+//
+//                                }
+//                                else {
+//                                    entries = new ArrayList<>();
+//                                    test.setText(test_name);
+//                                    entries.add(new PieEntry(Float.parseFloat(v), "Correct"));
+//                                    entries.add(new PieEntry(Float.parseFloat(w), "Wrong"));
+//                                }
+//                            }
+//                        });
+//
+//
+//
+//                    } else
+//                    {
+//                        pieChart.setVisibility(View.GONE);
+//                           notest.setVisibility(View.VISIBLE);
+//                    }
 
 
                     }
@@ -285,6 +286,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(new Intent(Home.this, Teacher.class));
             } else if (id == R.id.nav_about) {
                 Toast.makeText(instance, "About", Toast.LENGTH_SHORT).show();
+            }else if (id == R.id.nav_upload) {
+                startActivity(new Intent(instance, Upload.class));
             }
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
