@@ -92,16 +92,26 @@ public class PracticeTests extends AppCompatActivity {
                 }
 
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-
-                    que.add(childDataSnapshot.child("QUESTION").getValue().toString());
-                    A.add(childDataSnapshot.child("OPT A").getValue().toString());
-                    B.add(childDataSnapshot.child("OPT B").getValue().toString());
-                    C.add(childDataSnapshot.child("OPT C").getValue().toString());
-                    D.add(childDataSnapshot.child("OPT D").getValue().toString());
-                    if (childDataSnapshot.hasChild("CORRECT ANS")){ans.add(childDataSnapshot.child("CORRECT ANS").getValue().toString());} else {ans.add("Not aval");}
-
-//                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
-                    key.add(childDataSnapshot.getKey());
+                    if (childDataSnapshot.hasChild("QUESTION") &&
+                            childDataSnapshot.hasChild("OPT A") &&
+                            childDataSnapshot.hasChild("OPT B") &&
+                            childDataSnapshot.hasChild("OPT C") &&
+                            childDataSnapshot.hasChild("OPT D") &&
+                            childDataSnapshot.hasChild("CORRECT ANS")) {
+                        que.add(childDataSnapshot.child("QUESTION").getValue().toString());
+                        A.add(childDataSnapshot.child("OPT A").getValue().toString());
+                        B.add(childDataSnapshot.child("OPT B").getValue().toString());
+                        C.add(childDataSnapshot.child("OPT C").getValue().toString());
+                        D.add(childDataSnapshot.child("OPT D").getValue().toString());
+                        ans.add(childDataSnapshot.child("CORRECT ANS").getValue().toString());
+                        //                    marksa.add(childDataSnapshot.child("marks").getValue().toString());
+                        key.add(childDataSnapshot.getKey());
+                    }
+                    else
+                    {
+                        Toast.makeText(PracticeTests.this, "Data is Improper", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
                 steppedprogress();
                 starttest(0);

@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:padding="10dp"
+    android:layout_marginTop="7dp"
     android:background="@color/header"
     android:layout_height="wrap_content"
     >
@@ -12,8 +13,6 @@
         android:hint="Question: "
         android:textColorHint="@color/background"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
         android:textColor="@color/background"
         android:id="@+id/id_user_test_question"/>
     <LinearLayout
@@ -25,13 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textStyle="bold"
         android:textColor="@color/background"
         android:text="Correct Answer: "/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:textColor="@color/background"
         android:textSize="15sp"
         android:id="@+id/id_user_test_correct_ans"/>
@@ -45,13 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:textStyle="bold"
             android:textColor="@color/background"
             android:text="Given Answer: "/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:textSize="15sp"
             android:textColor="@color/background"
             android:id="@+id/id_user_test_given_ans"/>

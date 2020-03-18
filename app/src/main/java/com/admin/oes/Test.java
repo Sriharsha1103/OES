@@ -106,15 +106,22 @@ public class Test extends AppCompatActivity {
                 q_number.add(0);
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     q_number.add(i);
-                    que.add(childDataSnapshot.child("q").getValue().toString());
-                    A.add(childDataSnapshot.child("a").getValue().toString());
-                    B.add(childDataSnapshot.child("b").getValue().toString());
-                    C.add(childDataSnapshot.child("c").getValue().toString());
-                    D.add(childDataSnapshot.child("d").getValue().toString());
-                    ans.add(childDataSnapshot.child("ans").getValue().toString());
+                    if(childDataSnapshot.hasChild("q")&&childDataSnapshot.hasChild("a")&&childDataSnapshot.hasChild("b")&&childDataSnapshot.hasChild("c")&&childDataSnapshot.hasChild("d")&&childDataSnapshot.hasChild("ans")) {
+                        que.add(childDataSnapshot.child("q").getValue().toString());
+                        A.add(childDataSnapshot.child("a").getValue().toString());
+                        B.add(childDataSnapshot.child("b").getValue().toString());
+                        C.add(childDataSnapshot.child("c").getValue().toString());
+                        D.add(childDataSnapshot.child("d").getValue().toString());
+                        ans.add(childDataSnapshot.child("ans").getValue().toString());
+
                   //  marksa.add(childDataSnapshot.child("marks").getValue().toString());
                     key.add(childDataSnapshot.getKey());
-                    i++;
+                    i++;}
+                    else
+                    {
+                        Toast.makeText(Test.this, "Data is Improper", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
                 steppedprogress();
                 starttest(0);
@@ -277,6 +284,7 @@ public class Test extends AppCompatActivity {
                     questionModel = new QuestionModel();
                     questionModel.setAnswer(dbans.get(j));
                     questionModel.setCorrectAnswer(ans.get(j));
+                    Log.i("correct ans",ans.get(j));
                     questionModel.setQuestionNumber(que.get(j));
                     myList.add(questionModel);
                 }

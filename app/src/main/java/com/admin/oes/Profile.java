@@ -24,7 +24,7 @@ public class Profile extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private EditText profileName;
     public TextView profileEmail;
-    private EditText profileRollno;
+    private TextView profileRollno;
     private EditText profilePhoneno;
     private TextView profileGender;
     private TextView profileBrandhandyear;
@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity {
 
         profileName = (EditText) findViewById(R.id.profile_name);
         profileEmail = (TextView) findViewById(R.id.profile_email);
-        profileRollno = (EditText) findViewById(R.id.profile_rollno);
+        profileRollno = (TextView) findViewById(R.id.profile_rollno);
         profilePhoneno = (EditText) findViewById(R.id.profile_phoneno);
         profileGender = (TextView) findViewById(R.id.profile_gender);
         profileBrandhandyear = (TextView) findViewById(R.id.profile_brandhandyear);

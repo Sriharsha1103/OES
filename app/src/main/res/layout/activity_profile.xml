@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <TextView
                         android:id="@+id/profile_rollno"
                         android:layout_width="331dp"
                         android:layout_height="wrap_content"

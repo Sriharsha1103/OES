@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/header"
+    android:background="@color/background"
     tools:context="com.admin.oes.Statistics.Statistics">
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
@@ -23,7 +23,7 @@
         android:id="@+id/id_user_test_details_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/header"
+        android:backgroundTint="@color/background"
         android:background="@color/background" />
 </androidx.core.widget.NestedScrollView>
 
