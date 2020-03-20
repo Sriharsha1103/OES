@@ -66,6 +66,8 @@ public class Test extends AppCompatActivity {
     private ArrayList<QuestionModel> myList;
     private SharedPreferences sharedPreferences;
     CountDownTimer countDownTimer;
+    TextView tv ;
+
 
 
     @Override
@@ -81,7 +83,7 @@ public class Test extends AppCompatActivity {
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
 //        getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
-
+        tv = findViewById(R.id.next_test);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -178,7 +180,6 @@ public class Test extends AppCompatActivity {
         } else {
             answered++;
             if (radioans.getText().equals(ans.get(pro))) {
-
                 dbans.set(pro, radioans.getText().toString());
                 corect++;
             } else {
@@ -225,14 +226,15 @@ public class Test extends AppCompatActivity {
             progress++;
             current_step = progress;
             ViewAnimation.fadeOutIn(quest_tv);
+            Log.d("Tempnext" , String.valueOf(progress));
         }
-        TextView tv = findViewById(R.id.next_test);
 
         if (tv.getText().equals("Submit")) {
 //            Wrong = MAX_STEP-1 - corect;
             showtestexitDialog();
         }
 
+        Log.d("TEMPcurrent" , String.valueOf(current_step));
         if (current_step >= MAX_STEP) {
             tv.setText("Submit");
         } else {
@@ -249,23 +251,37 @@ public class Test extends AppCompatActivity {
 
             position++;
         }
+
+        Log.d("Tempnext" , String.valueOf(position));
         progressBar.setProgress(current_step);
         setans(position - 1);
         starttest(position);
     }
 
     private void backStep(int progress) {
-        if (progress > 1) {
+        Log.d("TEMPpreviousss1" , String.valueOf(progress));
+        Log.d("TEMPpreviousss2" , String.valueOf(position));
+        if (progress > 0) {
             progress--;
+            tv.setText("Next");
             current_step = progress;
             ViewAnimation.fadeOutIn(quest_tv);
             position--;
+            Log.d("TEMPprevious1" , String.valueOf(progress));
+            Log.d("TEMPprevious2" , String.valueOf(position));
         }
 
         progressBar.setProgress(current_step);
-        if (position >= 0) {
+        if (position >= 1) {
+            Log.d("Temp1111" , " sjdhfhyg");
             setans(position - 1);
             starttest(position);
+            current_step = progress;
+        } else {
+            Log.d("Temp2222" , " sjdhfhyg");
+            setans(0);
+            starttest(0);
+            current_step = progress;
         }
 
     }

@@ -26,13 +26,18 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/background" />
 
-                <pl.droidsonroids.gif.GifImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:outlineAmbientShadowColor="@color/header"
-                    android:outlineSpotShadowColor="@color/header"
-                    android:background="@color/header"
-                    android:src="@drawable/gif" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_usability" />
+
+<!--                <pl.droidsonroids.gif.GifImageView-->
+<!--                    android:layout_width="200dp"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:outlineAmbientShadowColor="@color/header"-->
+<!--                    android:outlineSpotShadowColor="@color/header"-->
+<!--                    android:background="@color/header"-->
+<!--                    android:src="@drawable/gif" />-->
 
     </LinearLayout>
 
