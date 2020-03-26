@@ -131,8 +131,7 @@ public class Statistics extends AppCompatActivity {
                     String wrongans = childDataSnapshot.child("wrongans").getValue().toString();
                     String Time = childDataSnapshot.child("Time").getValue().toString();
                     String Teacher = childDataSnapshot.child("Teacher").getValue().toString();
-                    String ID = childDataSnapshot.child("ID").getValue().toString();
-                    listData.add(new StatisticsModel(Test_Name,Name,TotalQ,role,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
+                    String ID = childDataSnapshot.child("ID").getValue().toString();listData.add(new StatisticsModel(Test_Name,Name,TotalQ,role,Correctans,wrongans,Time,Teacher,ID,questionModel.getQuestions()));
                     Log.d("data12", String.valueOf(questionModel.getQuestions()));
                 }
                 adapter.setlist(listData);

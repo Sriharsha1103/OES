@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="header">#002447</color>
+    <color name="header">#ff333333</color>
     <color name="textColor" tools:ignore="MissingDefaultResource">#0C0C0C</color>
     <color name="pink">#FCD6D3</color>
     <color name="background">#F5F2F5</color>
