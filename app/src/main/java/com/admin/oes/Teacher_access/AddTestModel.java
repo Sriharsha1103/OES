@@ -1,11 +1,10 @@
 package com.admin.oes.Teacher_access;
 
 public class AddTestModel {
-    String type,test_name,no_of_questions,max_marks;
-    int weightage;
+    String type,test_name,no_of_questions,max_marks,weightage;
     String question;
 
-    public AddTestModel(String type, String test_name, String no_of_questions, String max_marks, int weightage) {
+    public AddTestModel(String type, String test_name, String no_of_questions, String max_marks, String weightage) {
         this.type = type;
         this.test_name = test_name;
         this.no_of_questions = no_of_questions;
@@ -44,11 +43,11 @@ public class AddTestModel {
         this.max_marks = max_marks;
     }
 
-    public int getWeightage() {
+    public String getWeightage() {
         return weightage;
     }
 
-    public void setWeightage(int weightage) {
+    public void setWeightage(String weightage) {
         this.weightage = weightage;
     }
 }

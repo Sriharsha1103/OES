@@ -30,6 +30,7 @@ int i=1;
         no_of_questions=i.getStringExtra("no of questions");
         max_marks=i.getStringExtra("max marks");
         weightage=i.getStringExtra("weightage");
+
     //    marks=findViewById(R.id.marks);
 //        marks.setText(""+weightage);
         question=findViewById(R.id.question);

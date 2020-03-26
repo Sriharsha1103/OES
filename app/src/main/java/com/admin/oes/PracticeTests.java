@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.format.DateFormat;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -29,10 +30,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class PracticeTests extends AppCompatActivity {
     private ProgressBar progressBar;
-    private TextView quest_tv;
+    private TextView quest_tv,timer;
     int answered=0;
     int MAX_STEP, selectedId, position = 0;
     int current_step = 1,corect = 0,Wrong=0;
@@ -53,6 +56,8 @@ public class PracticeTests extends AppCompatActivity {
     private QuestionModel questionModel;
     private ArrayList<QuestionModel> myList;
     private SharedPreferences sharedPreferences;
+    CountDownTimer countDownTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +67,7 @@ public class PracticeTests extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
+        timer = findViewById(R.id.counttowntimer);
 
         getSupportActionBar().setSubtitle("");
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
@@ -115,6 +121,7 @@ public class PracticeTests extends AppCompatActivity {
                 }
                 steppedprogress();
                 starttest(0);
+                timer();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -122,6 +129,20 @@ public class PracticeTests extends AppCompatActivity {
             }
         });
 
+    }
+    public void timer() {
+        countDownTimer = new CountDownTimer(MAX_STEP * 60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                String text = String.format(Locale.getDefault(), "%02d min: %02d sec",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60,
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60);
+                timer.setText(text);
+            }
+
+            public void onFinish() {
+                //  Toast.makeText(Test.this, "Katham!!", Toast.LENGTH_SHORT).show();
+            }
+        }.start();
     }
 
     public void starttest(int pos) {

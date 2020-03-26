@@ -9,8 +9,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.admin.oes.R;
@@ -28,7 +31,10 @@ public class AddingTest extends AppCompatActivity {
     RecyclerView rv;
     AddTestAdapter addTestAdapter;
     List<AddTestModel> addTestModelList;
-    int weightage=1;
+    String weightage="";
+    private Spinner spinner;
+    private static final String[] paths = {"item 1", "item 2", "item 3"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +43,17 @@ public class AddingTest extends AppCompatActivity {
         test_name=findViewById(R.id.id_add_test_test_name);
         no_of_questions=findViewById(R.id.id_add_test_no_of_questions);
         max_marks=findViewById(R.id.id_add_test_max_marks);
-        events=findViewById(R.id.id_add_test_events_type);
-        practice_tests=findViewById(R.id.id_add_test_Practice_tests_type);
-        equal_weightage_yes=findViewById(R.id.id_equal_weightage_yes);
-        equal_weightage_no=findViewById(R.id.id_equal_weightage_no);
+//        spinner = (Spinner)findViewById(R.id.spinner);
+//        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_spinner_item,paths);
+//
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+//        spinner.setOnItemSelectedListener(this);
+//        events=findViewById(R.id.id_add_test_events_type);
+//        practice_tests=findViewById(R.id.id_add_test_Practice_tests_type);
+//        equal_weightage_yes=findViewById(R.id.id_equal_weightage_yes);
+//        equal_weightage_no=findViewById(R.id.id_equal_weightage_no);
         if(events.isChecked())
         {
             Log.i("events","events selected");
@@ -63,7 +76,9 @@ public class AddingTest extends AppCompatActivity {
         addTestModelList=new ArrayList<>();
 
 
-    }
+
+
+}
 
     public void TestDone(View view) {
         if (test_name.getText().toString().isEmpty()) {
@@ -83,7 +98,7 @@ public class AddingTest extends AppCompatActivity {
             databaseReference.child("Max Marks").setValue(max_marks.getText().toString());
             databaseReference.child("Equal Weightage").setValue(equal_weightage_yes.getText().toString());
             int q=Integer.parseInt(no_of_questions.getText().toString());
-            weightage=(Integer.parseInt(max_marks.getText().toString()))/(Integer.parseInt(no_of_questions.getText().toString()));
+            weightage=String.valueOf((Integer.parseInt(max_marks.getText().toString()))/(Integer.parseInt(no_of_questions.getText().toString())));
             for(int i=0;i<q;i++)
             {
                 addTestModelList.add(new AddTestModel(type,test_name.getText().toString(),no_of_questions.getText().toString(),max_marks.getText().toString(),weightage));

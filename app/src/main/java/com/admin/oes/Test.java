@@ -196,22 +196,26 @@ public class Test extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setMax(MAX_STEP);
         progressBar.setProgress(current_step);
-        progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 
+        progressBar.getProgressDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         (findViewById(R.id.lyt_back)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current_step != 1) {
+                Log.d("currentstep", String.valueOf(current_step));
+                if (current_step != 1 ) {
                     backStep(current_step);
-                } else {
+                }
+                else {
                     Toast.makeText(Test.this, "First question", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
         (findViewById(R.id.lyt_next)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("nextstep", String.valueOf(current_step));
                 nextStep(current_step);
             }
         });
@@ -246,7 +250,6 @@ public class Test extends AppCompatActivity {
             setans(position);
             //  Toast.makeText(this, corect+"", Toast.LENGTH_SHORT).show();
         } else {
-
             position++;
         }
         progressBar.setProgress(current_step);

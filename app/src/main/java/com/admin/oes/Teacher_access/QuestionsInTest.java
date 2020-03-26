@@ -1,5 +1,6 @@
 package com.admin.oes.Teacher_access;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.admin.oes.Event.Model;
 import com.admin.oes.Event.MyAdapter;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionsInTest extends AppCompatActivity {
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,dbref;
     private List<TestDetailsModel> listData;
     private RecyclerView rv;
     private QuestionsInTestAdapter adapter;
@@ -67,4 +70,15 @@ public class QuestionsInTest extends AppCompatActivity {
             }
         });
     }
+
+    public void RemoveTest(View view) {
+        dbref = FirebaseDatabase.getInstance().getReference();
+        dbref.child("Tests").child(test_name).removeValue();
+        dbref.child("Events").child(test_name).removeValue();
+        Toast.makeText(QuestionsInTest.this, "Test Removed Successfully", Toast.LENGTH_SHORT).show();
+        finish();
+
+
+    }
+
 }

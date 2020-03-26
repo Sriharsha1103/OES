@@ -80,4 +80,11 @@ public class QuestionDetails extends AppCompatActivity {
             finish();
         }
     }
+
+    public void RemoveQuestion(View view) {
+        databaseReference=FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Tests").child(test_name).child(x).removeValue();
+        Toast.makeText(this, "Question Removed Successfully", Toast.LENGTH_SHORT).show();
+        finish();
+    }
 }

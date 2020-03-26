@@ -31,35 +31,35 @@
             android:textColorHint="@color/textColor"
             android:textColor="@color/textColor"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/load"
-            android:padding="8dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginTop="0dp"
-            android:text="Type of test:"/>
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/id_add_test_events_type"
-            android:text="Events"/>
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/id_add_test_Practice_tests_type"
-            android:text="Practice Tests"/>
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:background="@color/load"-->
+<!--            android:padding="8dp">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20sp"-->
+<!--            android:padding="8dp"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:text="Type of test:"/>-->
+<!--        <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:id="@+id/id_add_test_events_type"-->
+<!--            android:text="Events"/>-->
+<!--        <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:id="@+id/id_add_test_Practice_tests_type"-->
+<!--            android:text="Practice Tests"/>-->
+<!--        </LinearLayout>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,18 +98,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColor"
                 android:text="Equal Weightage"/>
-            <androidx.appcompat.widget.AppCompatCheckBox
+            <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/id_equal_weightage_yes"
-                android:text="Yes"/>
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_equal_weightage_no"
-                android:text="No"/>
+                android:layout_height="match_parent" />
+
+
         </LinearLayout>
 
     </com.google.android.material.textfield.TextInputLayout>
