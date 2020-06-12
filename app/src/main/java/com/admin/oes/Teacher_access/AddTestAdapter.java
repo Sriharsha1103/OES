@@ -35,20 +35,20 @@ public class AddTestAdapter extends RecyclerView.Adapter<AddTestAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final AddTestModel ld=listData.get(position);
         holder.addquestion.setText("Add Question");
-        holder.addquestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(context,AddTestQuestions.class);
-                int t = position + 1;
-                i.putExtra("position",t+"");
-                i.putExtra("test name",ld.getTest_name());
-                i.putExtra("type",ld.getType());
-                i.putExtra("no of questions",ld.getNo_of_questions());
-                i.putExtra("max marks",ld.getMax_marks());
-                i.putExtra("weightage",ld.getWeightage());
-                v.getContext().startActivity(i);
-            }
-        });
+//        holder.addquestion.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i=new Intent(context,AddTestQuestions.class);
+//                int t = position + 1;
+//                i.putExtra("position",t+"");
+//                i.putExtra("test name",ld.getTest_name());
+//                i.putExtra("type",ld.getType());
+//                i.putExtra("no of questions",ld.getNo_of_questions());
+//                i.putExtra("max marks",ld.getMax_marks());
+//                i.putExtra("weightage",ld.getWeightage());
+//                v.getContext().startActivity(i);
+//            }
+//        });
 
     }
 

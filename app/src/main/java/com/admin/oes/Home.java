@@ -257,12 +257,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(new Intent(Home.this, Subjects.class));
             } else if (id == R.id.nav_signout) {
                 showsignoutDialog();
-            } else if (id == R.id.nav_teacher) {
-                startActivity(new Intent(Home.this, Teacher.class));
             } else if (id == R.id.nav_about) {
-                Toast.makeText(instance, "About", Toast.LENGTH_SHORT).show();
-            }else if (id == R.id.nav_upload) {
-                startActivity(new Intent(instance, Upload.class));
+                startActivity(new Intent(Home.this, About.class));
+            }  else if (id == R.id.nav_teacher) {
+                startActivity(new Intent(Home.this, Teacher.class));
             }
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);

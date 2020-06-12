@@ -28,12 +28,12 @@ public class AddingTest extends AppCompatActivity {
     CheckBox events,practice_tests,equal_weightage_yes,equal_weightage_no;
     String type="Events";
     SharedPreferences sharedPreferences;
-    RecyclerView rv;
-    AddTestAdapter addTestAdapter;
-    List<AddTestModel> addTestModelList;
+    //RecyclerView rv;
+//    AddTestAdapter addTestAdapter;
+//    List<AddTestModel> addTestModelList;
     String weightage="";
     private Spinner spinner;
-    private static final String[] paths = {"item 1", "item 2", "item 3"};
+    //private static final String[] paths = {"item 1", "item 2", "item 3"};
 
 
     @Override
@@ -54,26 +54,26 @@ public class AddingTest extends AppCompatActivity {
 //        practice_tests=findViewById(R.id.id_add_test_Practice_tests_type);
 //        equal_weightage_yes=findViewById(R.id.id_equal_weightage_yes);
 //        equal_weightage_no=findViewById(R.id.id_equal_weightage_no);
-        if(events.isChecked())
-        {
-            Log.i("events","events selected");
-            type="Events";
-        }
-        if(practice_tests.isChecked())
-        {
-            type="Subjects";
-        }
+//        if(events.isChecked())
+//        {
+//            Log.i("events","events selected");
+//            type="Events";
+//        }
+//        if(practice_tests.isChecked())
+//        {
+//            type="Subjects";
+//        }
 //        weightage = Integer.parseInt(max_marks.getText().toString()) / Integer.parseInt(no_of_questions.getText().toString());
-        addTestAdapter = new AddTestAdapter(AddingTest.this);
+       // addTestAdapter = new AddTestAdapter(AddingTest.this);
         Log.i("list123", test_name.getText().toString());
         Log.i("list1234",type);
         Log.i("list12345", max_marks.getText().toString());
         Log.i("list123456", no_of_questions.getText().toString());
 
-        rv=findViewById(R.id.id_add_test_add_questiond_recycler_view);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        addTestModelList=new ArrayList<>();
+//        rv=findViewById(R.id.id_add_test_add_questiond_recycler_view);
+//        rv.setHasFixedSize(true);
+//        rv.setLayoutManager(new LinearLayoutManager(this));
+//        addTestModelList=new ArrayList<>();
 
 
 
@@ -97,16 +97,14 @@ public class AddingTest extends AppCompatActivity {
             databaseReference.child("Number of Questions").setValue(no_of_questions.getText().toString());
             databaseReference.child("Max Marks").setValue(max_marks.getText().toString());
             databaseReference.child("Equal Weightage").setValue(equal_weightage_yes.getText().toString());
-            int q=Integer.parseInt(no_of_questions.getText().toString());
-            weightage=String.valueOf((Integer.parseInt(max_marks.getText().toString()))/(Integer.parseInt(no_of_questions.getText().toString())));
-            for(int i=0;i<q;i++)
-            {
-                addTestModelList.add(new AddTestModel(type,test_name.getText().toString(),no_of_questions.getText().toString(),max_marks.getText().toString(),weightage));
-            }
-            rv.setAdapter(addTestAdapter);
-            addTestAdapter.setlist(addTestModelList);
-          //  DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference(type + test_name.getText().toString());
             Toast.makeText(AddingTest.this, "Test Created", Toast.LENGTH_SHORT).show();
+//            int q=Integer.parseInt(no_of_questions.toString());
+//            for(int i=0;i<q;i++)
+//            {
+  //              addTestModelList.add(new AddTestModel(type,test_name.getText().toString(),no_of_questions.getText().toString(),max_marks.getText().toString(),weightage));
+            //}
+        //    rv.setAdapter(addTestAdapter);
+    //        addTestAdapter.setlist(addTestModelList);
         }
     }
 

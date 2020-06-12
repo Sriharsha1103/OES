@@ -6,6 +6,10 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_teacher"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="Teacher" />
+        <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_event_black_24dp"
             android:title="Events" />
@@ -15,17 +19,11 @@
             android:title="Statistics" />
         <item
             android:id="@+id/nav_practice_tests"
-            android:icon="@drawable/ic_notifications_black_24dp"
+            android:icon="@drawable/practice_tests_foreground"
             android:title="Practice Tests" />
 
-        <item
-            android:id="@+id/nav_teacher"
-            android:icon="@drawable/ic_school_black_24dp"
-            android:title="Teacher" />
-        <item
-            android:id="@+id/nav_upload"
-            android:icon="@drawable/ic_school_black_24dp"
-            android:title="Upload" />
+
+
 
     </group>
 

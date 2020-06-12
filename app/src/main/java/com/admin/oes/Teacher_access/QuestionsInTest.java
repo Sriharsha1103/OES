@@ -81,4 +81,9 @@ public class QuestionsInTest extends AppCompatActivity {
 
     }
 
+    public void AddQuestion(View view) {
+        Intent i=new Intent(this,AddTestQuestions.class);
+        i.putExtra("testname",test_name);
+        startActivity(i);
+    }
 }

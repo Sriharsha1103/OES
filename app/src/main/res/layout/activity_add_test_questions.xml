@@ -27,6 +27,29 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/spacing_middle" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/load"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.AppCompatEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:hint="Question Number"
+                    android:textStyle="bold"
+                    android:id="@+id/id_question_number"
+                    android:textColor="@color/header"
+                    android:theme="@style/EditText.Yellow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_middle" />
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

@@ -21,6 +21,7 @@ public class StudentsData extends AppCompatActivity {
     DatabaseReference databaseReference;
     private List<StudentsDataMOdel> listData;
     private RecyclerView rv;
+    int count=0;
     private StudentsDataAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,13 @@ public class StudentsData extends AppCompatActivity {
                     if(Integer.parseInt(childDataSnapshot.child("Role").getValue().toString())==0)
                     {
                         listData.add(new StudentsDataMOdel(name,childDataSnapshot.getKey()));
+                        count++;
                         Log.i("name1234",name);
                     }
+                }
+                if(count==0)
+                {
+                    listData.add(new StudentsDataMOdel("No Students are registered",null));
                 }
                 adapter.setlist(listData);
                 rv.setAdapter(adapter);
