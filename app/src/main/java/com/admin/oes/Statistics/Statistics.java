@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.admin.oes.QuestionsModel;
 import com.admin.oes.R;
@@ -42,6 +44,7 @@ public class Statistics extends AppCompatActivity {
     private BarDataSet set1;
     List<StatisticsModel> listData;
     RecyclerView rv;
+    TextView textView ;
     StatisticsAdapter adapter;
     public  ArrayList<String> question=new ArrayList<>() ;
     public ArrayList<String> canswers =new ArrayList<>() ;
@@ -57,6 +60,7 @@ public class Statistics extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
         barChart = findViewById(R.id.barchart);
         listData = new ArrayList<>();
+        textView=findViewById(R.id.no_test_taken);
         adapter = new StatisticsAdapter(Statistics.this);
         rv=(RecyclerView)findViewById(R.id.id_user_test_details_recycler_view);
         sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
@@ -156,62 +160,69 @@ public class Statistics extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 float i = 1;
                 String parent = dataSnapshot.getKey();
-                for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    String v = childDataSnapshot.child("Correctans").getValue().toString();
-                    values.add(new BarEntry(i, Float.parseFloat(v),childDataSnapshot.getKey()));
-                    i++;
+                if(dataSnapshot.getChildrenCount()>0) {
+                    textView.setVisibility(View.INVISIBLE);
+                    for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
+                        String v = childDataSnapshot.child("Correctans").getValue().toString();
+                        values.add(new BarEntry(i, Float.parseFloat(v), childDataSnapshot.getKey()));
+                        i++;
+                    }
+
+
+                    barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
+
+                    if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
+                        //set1 = new BarDataSet(values, "Stats of student ");
+                        set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
+                        set1.setValues(values);
+                        barChart.getData().notifyDataChanged();
+                        barChart.notifyDataSetChanged();
+
+                    } else {
+                        set1 = new BarDataSet(values, "Stats of student ");
+
+                        set1.setDrawIcons(false);
+
+                        set1.setColors(ColorTemplate.MATERIAL_COLORS);
+
+
+                        int startColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
+                        int endColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_bright);
+                        set1.setGradientColor(startColor, endColor);
+
+                        int startColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
+                        int startColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_light);
+                        int startColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
+                        int startColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_light);
+                        int startColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_light);
+                        int endColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
+                        int endColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_purple);
+                        int endColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_dark);
+                        int endColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_dark);
+                        int endColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_dark);
+
+                        List<GradientColor> gradientColors = new ArrayList<>();
+                        gradientColors.add(new GradientColor(startColor1, endColor1));
+                        gradientColors.add(new GradientColor(startColor2, endColor2));
+                        gradientColors.add(new GradientColor(startColor3, endColor3));
+                        gradientColors.add(new GradientColor(startColor4, endColor4));
+                        gradientColors.add(new GradientColor(startColor5, endColor5));
+
+                        set1.setGradientColors(gradientColors);
+
+                        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+                        dataSets.add(set1);
+
+                        BarData data = new BarData(dataSets);
+                        data.setValueTextSize(10f);
+                        data.setBarWidth(0.9f);
+
+                        barChart.setData(data);
+                    }
                 }
-
-
-                barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
-
-                if (barChart.getData() != null && barChart.getData().getDataSetCount() > 0) {
-                    //set1 = new BarDataSet(values, "Stats of student ");
-                    set1 = (BarDataSet) barChart.getData().getDataSetByIndex(0);
-                    set1.setValues(values);
-                    barChart.getData().notifyDataChanged();
-                    barChart.notifyDataSetChanged();
-
-                } else {
-                    set1 = new BarDataSet(values, "Stats of student ");
-
-                    set1.setDrawIcons(false);
-
-                    set1.setColors(ColorTemplate.MATERIAL_COLORS);
-
-
-                    int startColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
-                    int endColor = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_bright);
-                    set1.setGradientColor(startColor, endColor);
-
-                    int startColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
-                    int startColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_light);
-                    int startColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_light);
-                    int startColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_light);
-                    int startColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_light);
-                    int endColor1 = ContextCompat.getColor(Statistics.this, android.R.color.holo_blue_dark);
-                    int endColor2 = ContextCompat.getColor(Statistics.this, android.R.color.holo_purple);
-                    int endColor3 = ContextCompat.getColor(Statistics.this, android.R.color.holo_green_dark);
-                    int endColor4 = ContextCompat.getColor(Statistics.this, android.R.color.holo_red_dark);
-                    int endColor5 = ContextCompat.getColor(Statistics.this, android.R.color.holo_orange_dark);
-
-                    List<GradientColor> gradientColors = new ArrayList<>();
-                    gradientColors.add(new GradientColor(startColor1, endColor1));
-                    gradientColors.add(new GradientColor(startColor2, endColor2));
-                    gradientColors.add(new GradientColor(startColor3, endColor3));
-                    gradientColors.add(new GradientColor(startColor4, endColor4));
-                    gradientColors.add(new GradientColor(startColor5, endColor5));
-
-                    set1.setGradientColors(gradientColors);
-
-                    ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-                    dataSets.add(set1);
-
-                    BarData data = new BarData(dataSets);
-                    data.setValueTextSize(10f);
-                    data.setBarWidth(0.9f);
-
-                    barChart.setData(data);
+                else
+                {
+                    textView.setVisibility(View.VISIBLE);
                 }
 
             }

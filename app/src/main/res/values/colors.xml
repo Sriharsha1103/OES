@@ -5,6 +5,7 @@
     <color name="pink">#FCD6D3</color>
     <color name="background">#F5F2F5</color>
     <color name="load">#b6ffff</color>
+    <color name="login">#7198AA</color>
     <color name="yellow">#FF9800</color>
     <color name="colorPrimaryDark">#E6000000</color>
     <color name="colorPrimary">#E6FFFFFF</color>//Textinput outline colour

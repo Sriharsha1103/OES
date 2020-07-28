@@ -81,7 +81,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         notest = findViewById(R.id.id_no_test_taken);
-        notest.setVisibility(View.GONE);
 
         pieChart = (PieChart) findViewById(R.id.chart1);
 
@@ -91,8 +90,28 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
         //PieEntryLabels = new ArrayList<String>();
-
+//DatabaseReference dr=FirebaseDatabase.getInstance().getReference();
+//dr.child("Users").child(firebaseAuth.getUid()).child("Exams").addValueEventListener(new ValueEventListener() {
+//    @Override
+//    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//        if(dataSnapshot.getChildrenCount()>0)
+//        {
+//            notest.setVisibility(View.INVISIBLE);
+//            AddValuesToPIEENTRY();
+//        }
+//        else
+//        {
+//            notest.setVisibility(View.VISIBLE);
+//        }
+//    }
+//
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//    }
+//});
         AddValuesToPIEENTRY();
+        notest.setVisibility(View.INVISIBLE);
 
         pieDataSet = new PieDataSet(entries,"");
         pieData = new PieData(pieDataSet);
@@ -127,7 +146,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Menu nav_Menu = navView.getMenu();
             nav_Menu.findItem(R.id.nav_teacher).setVisible(false);
         } else if (role.equals("1")) {
-            Toast.makeText(instance, "KUJGHFuksdb", Toast.LENGTH_SHORT).show();
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Teachers/" + firebaseUser.getUid());
             databaseReference.child("Name").setValue(sharedPreferences.getString("name", "0"));
         }

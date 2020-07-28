@@ -14,6 +14,12 @@
         android:outlineSpotShadowColor="@color/load"
         android:layout_height="wrap_content"
         android:layout_weight="5"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Tests Taken"
+        android:id="@+id/no_test_taken"
+        android:textStyle="bold"/>
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

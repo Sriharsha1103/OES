@@ -145,7 +145,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Login.this,"Email Sent Successfuly",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Email Sent Successfuly to reset password",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

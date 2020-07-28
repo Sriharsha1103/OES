@@ -154,6 +154,47 @@ public class Test extends AppCompatActivity {
             }
 
             public void onFinish() {
+                Date d = new Date();
+                CharSequence s = DateFormat.format("MMMM d, yyyy HH:mm:ss", d.getTime());
+                SharedPreferences sharedPreferences;
+                sharedPreferences = getApplicationContext().getSharedPreferences("sp", 0);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users/" + firebaseAuth.getUid() + "/Exams/" + keyi);
+                databaseReference.child("Name").setValue(sharedPreferences.getString("name", "0"));
+                databaseReference.child("TotalQ").setValue(MAX_STEP);
+                databaseReference.child("Correctans").setValue(corect);
+                databaseReference.child("wrongans").setValue(Wrong);
+                databaseReference.child("UnAnswered").setValue(MAX_STEP - corect - Wrong);
+                databaseReference.child("Time").setValue(s);
+                databaseReference.child("Teacher").setValue("Temp.....");
+                databaseReference.child("ID").setValue("Temp.....");
+                Log.d("Subbmitted", "");
+                myList = new ArrayList<>();
+                QuestionsModel model = new QuestionsModel();
+                for (int j = 0; j < dbans.size(); j++) {
+                    questionModel = new QuestionModel();
+                    questionModel.setAnswer(dbans.get(j));
+                    questionModel.setCorrectAnswer(ans.get(j));
+                    Log.i("correct ans", ans.get(j));
+                    questionModel.setQuestionNumber(que.get(j));
+                    myList.add(questionModel);
+                }
+
+                model.setQuestions(myList);
+                databaseReference.child(keyi).setValue(model);
+                Log.d("correct", String.valueOf(corect));
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("LastTakenTest", keyi);
+                Log.i("testname", keyi);
+                editor.putString("lastScore", String.valueOf(corect));
+                editor.putString("lastwrong", String.valueOf(Wrong));
+                editor.putString("UNAnswered", String.valueOf(MAX_STEP - corect - Wrong));
+                editor.apply();
+                    /*databaseReference.child("Ques").child(String.valueOf(j)).setValue(que.get(j));
+                    databaseReference.child("CorrectAnswer").child(String.valueOf(j)).setValue(ans.get(j));
+                    databaseReference.child("Answer").child(String.valueOf(j)).setValue(dbans.get(j));*/
+
+                Toast.makeText(Test.this, "Submitted..", Toast.LENGTH_SHORT).show();
+                finish();
               //  Toast.makeText(Test.this, "Katham!!", Toast.LENGTH_SHORT).show();
             }
         }.start();
